@@ -1,48 +1,47 @@
 import {
-  GET_TRENDING,
-  GET_NOW_PLAYING,
-  GET_POPULAR,
+  GET_TRENDING_MOVIES,
+  GET_NOW_PLAYING_MOVIES,
+  GET_POPULAR_MOVIES,
   GET_REVIEWS,
-  GET_TOP_RATED,
+  GET_TOP_RATED_MOVIES,
   GET_TRAILER,
   SET_LOADING,
   MOVIE_ERROR,
-  GET_CREDIT
+  GET_CREDIT,
+  GET_DETAIL_MOVIES
 } from '../constants/types';
 
 const movieLists = [
-  GET_TRENDING,
-  GET_NOW_PLAYING,
-  GET_POPULAR,
+  GET_TRENDING_MOVIES,
+  GET_NOW_PLAYING_MOVIES,
+  GET_POPULAR_MOVIES,
   GET_REVIEWS,
-  GET_TOP_RATED,
+  GET_TOP_RATED_MOVIES,
   GET_TRAILER,
   SET_LOADING,
-  MOVIE_ERROR,
   GET_CREDIT
 ];
 
 const initialState = {
   movies: {
-    [GET_TRENDING]: null,
-    [GET_NOW_PLAYING]: null,
-    [GET_POPULAR]: null,
+    [GET_TRENDING_MOVIES]: null,
+    [GET_NOW_PLAYING_MOVIES]: null,
+    [GET_POPULAR_MOVIES]: null,
     [GET_REVIEWS]: null,
-    [GET_TOP_RATED]: null,
+    [GET_TOP_RATED_MOVIES]: null,
     [GET_TRAILER]: null,
     [SET_LOADING]: null,
-    [MOVIE_ERROR]: null,
     [GET_CREDIT]: null
   },
+
   loading: {
-    [GET_TRENDING]: true,
-    [GET_NOW_PLAYING]: true,
-    [GET_POPULAR]: true,
+    [GET_TRENDING_MOVIES]: true,
+    [GET_NOW_PLAYING_MOVIES]: true,
+    [GET_POPULAR_MOVIES]: true,
     [GET_REVIEWS]: true,
-    [GET_TOP_RATED]: true,
+    [GET_TOP_RATED_MOVIES]: true,
     [GET_TRAILER]: true,
     [SET_LOADING]: true,
-    [MOVIE_ERROR]: true,
     [GET_CREDIT]: true
   },
   errors: []
@@ -51,7 +50,11 @@ const initialState = {
 export default function(state = initialState, action) {
   const { type, payload } = action;
 
-  const movieList = movieLists.find(list => list === type);
+  var movieList;
+
+  if (movieLists.indexOf(type) !== -1) {
+    movieList = type;
+  }
 
   switch (type) {
     case movieList:
@@ -65,6 +68,12 @@ export default function(state = initialState, action) {
           ...state.loading,
           [movieList]: false
         }
+      };
+
+    case MOVIE_ERROR:
+      return {
+        ...state,
+        errors: [...state.errors, payload]
       };
     default:
       return state;

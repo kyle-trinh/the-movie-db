@@ -1,14 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { getTrending } from '../../actions/movie';
+import Header from './Header';
 
 class Landing extends React.Component {
-  componentDidMount() {
-    this.props.getTrending();
-  }
   render() {
-    return <div>Landing</div>;
+    return <Header />;
   }
 }
 
-export default connect(null, { getTrending })(Landing);
+export default Landing;
