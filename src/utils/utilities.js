@@ -2,7 +2,7 @@ import { movieGenre, TvGenre } from '../constants';
 
 export function findGenreById(id, type) {
   var genreFound;
-  console.log(id);
+
   if (type === 'movie') {
     genreFound = movieGenre.find(function matchId(movie) {
       return movie.id === id;
@@ -35,4 +35,19 @@ export function findIdByGenre(name, type) {
   }
 
   return movieFound.id;
+}
+
+export function shortenOverview(description) {
+  var result;
+
+  if (description.split(' ') > 60) {
+    description = description
+      .split(' ')
+      .splice(0, 60)
+      .join(' ');
+
+    description += '...';
+  }
+
+  return description;
 }

@@ -67,3 +67,19 @@ export function getPopularMovies() {
     } catch (err) {}
   };
 }
+
+// get top rated movies
+export function getTopRatedMovies() {
+  return async function(dispatch) {
+    try {
+      const res = await axios.get(
+        `${PATH_BASE}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
+      );
+
+      dispatch({
+        type: GET_TOP_RATED_MOVIES,
+        payload: res.data.results
+      });
+    } catch (err) {}
+  };
+}

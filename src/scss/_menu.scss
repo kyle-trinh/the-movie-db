@@ -47,6 +47,11 @@
             color: $light-color;
           }
         }
+
+        .current {
+          background-color: $main-color;
+          border-bottom: 6px solid $secondary-color;
+        }
       }
     }
 

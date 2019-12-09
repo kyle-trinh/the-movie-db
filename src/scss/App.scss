@@ -54,6 +54,92 @@ body {
       align-items: flex-start;
       justify-content: center;
       overflow: hidden;
+
+      &__genre,
+      &__showtime {
+        font-size: 1.8rem;
+        font-weight: 400;
+        color: darken($light-color, 25);
+      }
+
+      &__title {
+        font-size: 6rem;
+        font-weight: 900;
+        line-height: 1.2;
+      }
+    }
+  }
+}
+
+#main__content {
+  &__home {
+    padding: 8rem 0rem;
+    background-color: darken($main-color, 30);
+
+    .switch__btn {
+      text-align: center;
+      .switch__btn__container {
+        width: 30rem;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+
+        label {
+          width: 100%;
+          display: flex;
+          #switch__btn__toggle {
+            display: none;
+          }
+
+          #switch__btn__toggle:checked
+            + .switch__btn__box
+            > .switch__btn__slider {
+            transform: translateX(14.5rem);
+          }
+
+          .switch__btn__box {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            background-color: $main-color;
+            border-radius: 4px;
+            width: 100%;
+            height: 7rem;
+            padding: 6px 6px;
+
+            .switch__btn__movie,
+            .switch__btn__tv {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              z-index: 2;
+            }
+
+            .switch__btn__movie {
+              left: 3.8rem;
+            }
+
+            .switch__btn__tv {
+              right: 2rem;
+            }
+
+            .switch__btn__slider {
+              width: 50%;
+              height: 100%;
+              background-color: darken($main-color, 20);
+              z-index: 0;
+              border-radius: 4px;
+
+              transform: translateX(0);
+              @include easeOut;
+            }
+          }
+        }
+      }
     }
   }
 }

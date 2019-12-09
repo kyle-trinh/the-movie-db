@@ -14,7 +14,9 @@ import {
   GET_TRAILER,
   GET_TRENDING_MOVIES,
   SET_LOADING,
-  MOVIE_ERROR
+  MOVIE_ERROR,
+  MOVIE,
+  TVSHOW
 } from './types';
 import MENU_ITEMS from './menu';
 
@@ -37,5 +39,7 @@ export {
   GET_TRENDING_MOVIES,
   SET_LOADING,
   MOVIE_ERROR,
-  MENU_ITEMS
+  MENU_ITEMS,
+  MOVIE,
+  TVSHOW
 };
