@@ -972,3 +972,15 @@ body {
             border-radius: 4px;
             transform: translateX(0);
             transition: all 0.5s ease-out; }
+  #main__content__home .movie__list {
+    min-height: 100vh; }
+    #main__content__home .movie__list__carousel__container {
+      background-color: #123851;
+      border-radius: 6px;
+      padding: 2rem 3.5rem;
+      margin-bottom: 2rem; }
+      #main__content__home .movie__list__carousel__container__header {
+        font-size: 2.8rem;
+        color: #409ad5;
+        margin-bottom: 1.6rem;
+        font-weight: 700; }

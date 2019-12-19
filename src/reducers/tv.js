@@ -38,6 +38,18 @@ export default function(state = initialState, action) {
   }
 
   switch (type) {
+    case tvList:
+      return {
+        ...state,
+        tvShows: {
+          ...state.tvShows,
+          [tvList]: payload
+        },
+        loading: {
+          ...state.loading,
+          [tvList]: false
+        }
+      };
     default:
       return state;
   }

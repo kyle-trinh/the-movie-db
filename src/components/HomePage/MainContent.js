@@ -1,7 +1,14 @@
 import React from 'react';
 import SwitchBtn from './SwitchBtn';
 import { MOVIE, TVSHOW } from '../../constants';
-import { GetNowPlaying, GetPopular, GetTopRated } from './CarouselContainer';
+import {
+  GetNowPlaying,
+  GetPopular,
+  GetTopRated,
+  GetNowPlayingTV,
+  GetPopularTV,
+  GetTopRatedTV
+} from './CarouselContainer';
 import { getNowPlayingMovies, getPopularMovies } from '../../actions/movie';
 
 class MainContent extends React.Component {
@@ -10,23 +17,43 @@ class MainContent extends React.Component {
     this.state = {
       mediaType: MOVIE
     };
+    this.typeToggle = this.typeToggle.bind(this);
+  }
+
+  typeToggle() {
+    if (this.state.mediaType === MOVIE) {
+      this.setState({
+        mediaType: TVSHOW
+      });
+    } else {
+      this.setState({
+        mediaType: MOVIE
+      });
+    }
+
+    console.log(this.state.mediaType);
   }
 
   render() {
-    const typeToggle = type => {
-      this.setState({
-        mediaType: type
-      });
-      console.log(this.state.mediaType);
-    };
-
     return (
       <section id="main__content__home">
         <div className="container">
-          <SwitchBtn typeToggle={typeToggle} />
-          <GetNowPlaying header="Now Playing Movies" />
-          <GetTopRated header="Top Rated Movies" />
-          <GetPopular header="Popular Movies" />
+          <SwitchBtn typeToggle={this.typeToggle} />
+          <section className="movie__list">
+            {this.state.mediaType === MOVIE ? (
+              <>
+                <GetNowPlaying header="Now Playing Movies" />
+                <GetTopRated header="Top Rated Movies" />
+                <GetPopular header="Popular Movies" />
+              </>
+            ) : (
+              <>
+                <GetNowPlayingTV header="Now Playing TV" />
+                <GetTopRatedTV header="Top Rated TV" />
+                <GetPopularTV header="Popular TV" />
+              </>
+            )}
+          </section>
         </div>
       </section>
     );

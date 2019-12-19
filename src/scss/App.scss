@@ -141,6 +141,23 @@ body {
         }
       }
     }
+
+    .movie__list {
+      min-height: 100vh;
+      &__carousel__container {
+        background-color: darken($main-color, 25);
+        border-radius: 6px;
+        padding: 2rem 3.5rem;
+        margin-bottom: 2rem;
+
+        &__header {
+          font-size: 2.8rem;
+          color: lighten($main-color, 10);
+          margin-bottom: 1.6rem;
+          font-weight: 700;
+        }
+      }
+    }
   }
 }
 

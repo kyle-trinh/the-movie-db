@@ -3,16 +3,14 @@ import { MOVIE, TVSHOW } from '../../constants';
 
 function SwitchBtn(props) {
   return (
-    <div className="switch__btn">
+    <div className="switch__btn mb-2">
       <div className="switch__btn__container">
         <label htmlFor="switch__btn__toggle">
           <input
             type="checkbox"
             id="switch__btn__toggle"
             onChange={e => {
-              e.target.checked
-                ? props.typeToggle(MOVIE)
-                : props.typeToggle(TVSHOW);
+              props.typeToggle();
             }}
           ></input>
 
