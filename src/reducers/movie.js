@@ -22,7 +22,8 @@ const movieLists = [
   GET_TRAILER,
   SET_LOADING,
   GET_CREDIT,
-  GET_MOVIES_BY_GENRE
+  GET_MOVIES_BY_GENRE,
+  GET_DETAIL_MOVIES
 ];
 
 const initialState = {
@@ -35,7 +36,8 @@ const initialState = {
     [GET_TRAILER]: null,
     [SET_LOADING]: null,
     [GET_CREDIT]: null,
-    [GET_MOVIES_BY_GENRE]: null
+    [GET_MOVIES_BY_GENRE]: null,
+    [GET_DETAIL_MOVIES]: null
   },
 
   loading: {
@@ -47,7 +49,8 @@ const initialState = {
     [GET_TRAILER]: true,
     [SET_LOADING]: true,
     [GET_CREDIT]: true,
-    [GET_MOVIES_BY_GENRE]: true
+    [GET_MOVIES_BY_GENRE]: true,
+    [GET_DETAIL_MOVIES]: true
   },
   errors: []
 };

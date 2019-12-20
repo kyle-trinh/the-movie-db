@@ -3,7 +3,10 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ScrollToTop, Navbar, Footer } from './components/Layout';
 import Landing from './components/HomePage/Landing';
 import Movie from './components/Movies';
-import { MOVIE, TVSHOW } from './constants';
+import MovieDetail from './components/MovieDetail';
+import withMovieFetching from './components/HOC/withMovieFetching';
+import { MOVIE, TVSHOW, GET_DETAIL_MOVIES } from './constants';
+import { getMovieDetails } from './actions/movie';
 
 import './App.css';
 
@@ -29,6 +32,20 @@ function App() {
                 );
               }}
               // component={Movie}
+            />
+            <Route
+              exact
+              path="/:mediaType/details/:id"
+              render={function(props) {
+                return (
+                  <MovieDetail
+                    {...props}
+                    mediaType={
+                      props.match.params.mediaType === 'movies' ? MOVIE : TVSHOW
+                    }
+                  />
+                );
+              }}
             />
           </Switch>
           <Footer />

@@ -104,3 +104,22 @@ export function getMovieByGenre(genreId, page = 1, mediaType = MOVIE) {
     } catch (err) {}
   };
 }
+
+export function getMovieDetails(id, mediaType = MOVIE) {
+  return async function(dispatch) {
+    try {
+      const res = await axios.get(
+        `${PATH_BASE}/${
+          mediaType === MOVIE ? 'movie' : 'tv'
+        }/${id}?api_key=${API_KEY}&language=en-US`
+      );
+
+      dispatch({
+        type: GET_DETAIL_MOVIES,
+        payload: res.data
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}

@@ -38,10 +38,10 @@ export function findIdByGenre(name, type = MOVIE) {
 }
 
 export function shortenOverview(description) {
-  if (description.split(' ') > 60) {
+  if (description.split(' ').length > 40) {
     description = description
       .split(' ')
-      .splice(0, 60)
+      .splice(0, 40)
       .join(' ');
 
     description += '...';
@@ -72,3 +72,33 @@ export function normalizeGenre(string) {
   string = string.replace(' ', '-');
   return string;
 }
+
+// export function formatCurrency(number) {
+//   if (typeof number !== 'number') {
+//     return 'Unavalable';
+//   }
+//   var result = parseInt(number);
+
+//   var result2 = result.toString();
+//   var first = result2.length % 3;
+
+//   var arr = result2.split('');
+
+//   console.log(arr);
+//   console.log(first);
+//   var count = 0;
+//   while (first < result2.length) {
+//     if (first > 0) {
+//       arr.splice(first, 0, ',');
+//     }
+
+//     first += 3 + count;
+//     count++;
+//     console.log(first);
+//   }
+
+//   arr.unshift('$');
+//   console.log(arr);
+
+//   return arr.join('');
+// }

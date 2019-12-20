@@ -15,7 +15,11 @@ function withMovieFetching(
 ) {
   class HOComponent extends React.Component {
     componentDidMount() {
-      this.props.fetchMovie();
+      if (this.props.match && this.props.match.params.id) {
+        this.props.fetchMovie(this.props.match.params.id);
+      } else {
+        this.props.fetchMovie();
+      }
     }
 
     render() {
