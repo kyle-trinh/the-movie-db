@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { TVSHOW, MOVIE } from '../../constants';
+import SpinnerSm from '../Layout/SpinnerSm';
 
 function getDisplayName(Component) {
   return Component.displayName || Component.name || 'Component';
@@ -19,7 +20,11 @@ function withMovieFetching(
 
     render() {
       HOComponent.displayName = `HOComponent(${getDisplayName(Component)})`;
-      return this.props.loading ? null : <Component {...this.props} />;
+      return this.props.loading ? (
+        <SpinnerSm />
+      ) : (
+        <Component mediaType={mediaType} {...this.props} />
+      );
     }
   }
 

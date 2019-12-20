@@ -6,7 +6,7 @@ function SlideInfo({ movie }) {
   return (
     <div className="movie__info">
       <h3 className="movie__info__genre">
-        {movie.genre_ids.map(id => findGenreById(id, 'movie')).join(' - ')}
+        {movie.genre_ids.map(id => findGenreById(id)).join(' - ')}
       </h3>
       <h1 className="movie__info__title">{movie.title || 'Unavailable'}</h1>
       <h3 className="movie__info__showtime mb-3">{movie.release_date}</h3>

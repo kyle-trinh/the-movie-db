@@ -8,7 +8,9 @@ import {
   SET_LOADING,
   MOVIE_ERROR,
   GET_CREDIT,
-  GET_DETAIL_MOVIES
+  GET_DETAIL_MOVIES,
+  GET_GENRE_SET_LOADING,
+  GET_MOVIES_BY_GENRE
 } from '../constants/types';
 
 const movieLists = [
@@ -19,7 +21,8 @@ const movieLists = [
   GET_TOP_RATED_MOVIES,
   GET_TRAILER,
   SET_LOADING,
-  GET_CREDIT
+  GET_CREDIT,
+  GET_MOVIES_BY_GENRE
 ];
 
 const initialState = {
@@ -31,7 +34,8 @@ const initialState = {
     [GET_TOP_RATED_MOVIES]: null,
     [GET_TRAILER]: null,
     [SET_LOADING]: null,
-    [GET_CREDIT]: null
+    [GET_CREDIT]: null,
+    [GET_MOVIES_BY_GENRE]: null
   },
 
   loading: {
@@ -42,7 +46,8 @@ const initialState = {
     [GET_TOP_RATED_MOVIES]: true,
     [GET_TRAILER]: true,
     [SET_LOADING]: true,
-    [GET_CREDIT]: true
+    [GET_CREDIT]: true,
+    [GET_MOVIES_BY_GENRE]: true
   },
   errors: []
 };
@@ -67,6 +72,15 @@ export default function(state = initialState, action) {
         loading: {
           ...state.loading,
           [movieList]: false
+        }
+      };
+
+    case GET_GENRE_SET_LOADING:
+      return {
+        ...state,
+        loading: {
+          ...state.loading,
+          [GET_MOVIES_BY_GENRE]: true
         }
       };
 

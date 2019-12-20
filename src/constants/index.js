@@ -16,7 +16,9 @@ import {
   SET_LOADING,
   MOVIE_ERROR,
   MOVIE,
-  TVSHOW
+  TVSHOW,
+  GET_MOVIES_BY_GENRE,
+  GET_GENRE_SET_LOADING
 } from './types';
 import MENU_ITEMS from './menu';
 
@@ -41,5 +43,7 @@ export {
   MOVIE_ERROR,
   MENU_ITEMS,
   MOVIE,
-  TVSHOW
+  TVSHOW,
+  GET_MOVIES_BY_GENRE,
+  GET_GENRE_SET_LOADING
 };

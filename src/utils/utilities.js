@@ -1,13 +1,13 @@
-import { movieGenre, TvGenre } from '../constants';
+import { movieGenre, TvGenre, MOVIE, TVSHOW } from '../constants';
 
-export function findGenreById(id, type) {
+export function findGenreById(id, type = MOVIE) {
   var genreFound;
 
-  if (type === 'movie') {
+  if (type === MOVIE) {
     genreFound = movieGenre.find(function matchId(movie) {
       return movie.id === id;
     });
-  } else {
+  } else if (type === TVSHOW) {
     genreFound = TvGenre.find(function matchId(movie) {
       return movie.id === id;
     });
@@ -20,17 +20,17 @@ export function findGenreById(id, type) {
   return 'Unavailable';
 }
 
-export function findIdByGenre(name, type) {
+export function findIdByGenre(name, type = MOVIE) {
   name = name.toLowerCase();
   var movieFound;
 
-  if (type === 'movie') {
+  if (type === MOVIE) {
     movieFound = movieGenre.find(function matchName(movie) {
-      return movie.name === name;
+      return normalizeGenre(movie.name).toLowerCase() === name;
     });
-  } else {
+  } else if (type === TVSHOW) {
     movieFound = TvGenre.find(function matchName(movie) {
-      return movie.name === name;
+      return normalizeGenre(movie.name).toLowerCase() === name;
     });
   }
 
@@ -38,8 +38,6 @@ export function findIdByGenre(name, type) {
 }
 
 export function shortenOverview(description) {
-  var result;
-
   if (description.split(' ') > 60) {
     description = description
       .split(' ')
@@ -50,4 +48,27 @@ export function shortenOverview(description) {
   }
 
   return description;
+}
+export function shortenTitle(title) {
+  if (title.split(' ') > 10) {
+    title = title
+      .split(' ')
+      .splice(0, 10)
+      .join(' ');
+
+    title += '...';
+  }
+
+  return title;
+}
+
+export function capitalize(string) {
+  if (typeof string !== 'string') return '';
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export function normalizeGenre(string) {
+  string = string.replace(' & ', '-');
+  string = string.replace(' ', '-');
+  return string;
 }

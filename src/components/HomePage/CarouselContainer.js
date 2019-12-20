@@ -17,18 +17,22 @@ import {
   MOVIE,
   TVSHOW
 } from '../../constants';
-import { toClass } from 'recompose';
 
 class CarouselContainer extends React.Component {
   render() {
     return (
-      <div className="movie__list__carousel__container">
+      // <div className="movie__list__carousel__container">
+      <>
         <h2 className="movie__list__carousel__container__header">
           {this.props.header}
         </h2>
 
-        <MovieCarousel movies={this.props.movies} />
-      </div>
+        <MovieCarousel
+          movies={this.props.movies}
+          mediaType={this.props.mediaType}
+        />
+      </>
+      // </div>
     );
   }
 }

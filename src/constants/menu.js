@@ -4,11 +4,11 @@ const MENU_ITEMS = [
     title: 'Home'
   },
   {
-    url: '/movie/all/comedy',
+    url: '/movies/comedy/page=1',
     title: 'Movies'
   },
   {
-    url: '/tv/all/comedy',
+    url: '/tv/comedy/page=1',
     title: 'Tv Shows'
   }
 ];

@@ -14,6 +14,23 @@
   &-primary {
     color: $main-color;
   }
+
+  &-normal {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+
+  &-bold {
+    font-weight: 700;
+  }
+
+  &-dim {
+    color: darken($light-color, 20);
+  }
+
+  &-secondary {
+    color: $secondary-color;
+  }
 }
 
 // heading
@@ -27,9 +44,16 @@ h2 {
   font-weight: 900;
 }
 
+.section-heading {
+  font-size: 5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
 // anchor-tag
 a {
   text-decoration: none;
+  color: $light-color;
 }
 
 ul {
@@ -38,6 +62,11 @@ ul {
 
 img {
   width: 100%;
+}
+
+// section
+section {
+  padding: 8rem 0;
 }
 
 // Padding
@@ -130,6 +159,21 @@ img {
   }
 }
 
+.mt {
+  &-1 {
+    margin-top: 1rem;
+  }
+  &-2 {
+    margin-top: 2rem;
+  }
+  &-3 {
+    margin-top: 3rem;
+  }
+  &-4 {
+    margin-top: 4rem;
+  }
+}
+
 .mr {
   &-1 {
     margin-right: 1rem;
@@ -177,6 +221,7 @@ img {
     @extend %btn-shared;
     background-color: $main-color;
     color: $light-color;
+    border: 2px solid $main-color;
 
     &:hover .btn-primary-overlay {
       transform: scale(1.6);
@@ -191,7 +236,7 @@ img {
 
   &-secondary {
     @extend %btn-shared;
-    background-color: none;
+    background-color: transparent;
     border: 2px solid $light-color;
     color: $light-color;
 
@@ -207,6 +252,20 @@ img {
     &-overlay {
       @extend %btn-overlay;
       background-color: $secondary-color;
+    }
+
+    &:disabled {
+      background-color: lighten($dark-color, 10);
+      cursor: not-allowed;
+
+      .btn-secondary-overlay {
+        @extend %btn-overlay;
+        background-color: lighten($dark-color, 10);
+      }
+
+      &:hover p {
+        color: $light-color;
+      }
     }
   }
 }
@@ -254,4 +313,99 @@ img {
   border-radius: 6px;
   position: relative;
   overflow: hidden;
+
+  &:hover .carousel__movie-overlay {
+    transform: scale(2) translateX(0) translateY(0) rotate(0deg);
+  }
+
+  &:hover .carousel__movie-info {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.spinner-sm {
+  width: 5rem;
+  margin: auto;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Carousel Styling
+.carousel__movie {
+  &-overlay {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+    transform: scale(2) rotate(45deg) translateX(-45%) translateY(-85%);
+    background-color: $main-color;
+    transition: transform 1.5s cubic-bezier(0.2, 1, 0.3, 1);
+  }
+
+  &-info {
+    position: relative;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 1rem;
+    color: $light-color;
+    opacity: 0;
+    visibility: hidden;
+    @include easeOut;
+
+    &-title {
+      font-size: 2rem;
+      line-height: 1;
+      font-weight: 900;
+      margin-bottom: 1rem;
+
+      &:after {
+        content: '';
+        display: block;
+        width: 3rem;
+        height: 3px;
+        background-color: $secondary-color;
+        margin-top: 0.5rem;
+      }
+    }
+
+    &-genre {
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    &-vote {
+      position: absolute;
+      background-color: $secondary-color;
+      top: 3rem;
+      right: 0;
+      padding: 1.3rem 1.4rem;
+      line-height: 0;
+      font-size: 1.3rem;
+      color: $dark-color;
+      font-weight: 700;
+    }
+  }
+}
+
+.underline {
+  display: block;
+  margin: auto;
+  height: 3px;
+  width: 5rem;
+  background-color: $secondary-color;
 }

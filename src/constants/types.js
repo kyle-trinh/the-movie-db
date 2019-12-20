@@ -15,3 +15,5 @@ export const MOVIE_ERROR = 'MOVIE_ERROR';
 export const SET_LOADING = 'SET_LOADING';
 export const MOVIE = 'MOVIE';
 export const TVSHOW = 'TVSHOW';
+export const GET_MOVIES_BY_GENRE = 'GET_MOVIES_BY_GENRE';
+export const GET_GENRE_SET_LOADING = 'GET_GENRE_SET_LOADING';

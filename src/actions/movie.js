@@ -11,8 +11,11 @@ import {
   GET_TRAILER,
   GET_TRENDING_MOVIES,
   SET_LOADING,
-  MOVIE_ERROR
+  MOVIE_ERROR,
+  MOVIE,
+  TVSHOW
 } from '../constants';
+import { GET_MOVIES_BY_GENRE } from '../constants/types';
 
 // get Trending movies for Landing Page Header
 export function getTrendingMovies() {
@@ -79,6 +82,24 @@ export function getTopRatedMovies() {
       dispatch({
         type: GET_TOP_RATED_MOVIES,
         payload: res.data.results
+      });
+    } catch (err) {}
+  };
+}
+
+// get movie list by genre
+export function getMovieByGenre(genreId, page = 1, mediaType = MOVIE) {
+  return async function(dispatch) {
+    try {
+      const res = await axios.get(
+        `${PATH_BASE}/discover/${
+          mediaType === MOVIE ? 'movie' : 'tv'
+        }?api_key=${API_KEY}&language=en-US&with_genres=${genreId}&page=${page}`
+      );
+
+      dispatch({
+        type: GET_MOVIES_BY_GENRE,
+        payload: res.data
       });
     } catch (err) {}
   };

@@ -1,15 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MENU_ITEMS } from '../../constants';
+import { withRouter } from 'react-router-dom';
+
+function handleCurrentChange(pathname) {
+  var prefix = pathname.split('/')[1];
+  if (prefix === 'movies') {
+    return 'movies';
+  } else if (prefix === 'tv') {
+    return 'tv shows';
+  } else if (prefix === '') {
+    return 'home';
+  }
+}
 
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: 'home'
+      current: handleCurrentChange(this.props.location.pathname)
     };
   }
+
+  componentDidUpdate(prevProps) {
+    if (
+      handleCurrentChange(prevProps.location.pathname) !==
+      handleCurrentChange(this.props.location.pathname)
+    ) {
+      this.setState({
+        current: handleCurrentChange(this.props.location.pathname)
+      });
+    }
+  }
+
   render() {
+    console.log(this.props.location.pathname.split('/')[1]);
     return (
       <div className="navbar">
         <div className="container">
@@ -58,4 +83,4 @@ class Navbar extends React.Component {
   }
 }
 
-export default Navbar;
+export default withRouter(Navbar);

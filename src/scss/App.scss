@@ -23,6 +23,10 @@ body {
   scroll-behavior: smooth;
 }
 
+#root {
+  position: relative;
+}
+
 #header {
   &-home {
     height: 100vh;
@@ -68,6 +72,14 @@ body {
         line-height: 1.2;
       }
     }
+  }
+
+  &-movie {
+    background-color: darken($main-color, 20);
+    height: 50vh;
+    width: 100%;
+    position: relative;
+    z-index: 5;
   }
 }
 
@@ -149,6 +161,8 @@ body {
         border-radius: 6px;
         padding: 2rem 3.5rem;
         margin-bottom: 2rem;
+        height: 41rem;
+        position: relative;
 
         &__header {
           font-size: 2.8rem;
@@ -158,6 +172,147 @@ body {
         }
       }
     }
+  }
+}
+
+.header__movie-content {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.genre__selector {
+  position: relative;
+  z-index: 4;
+
+  &-current {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: lighten($main-color, 20);
+    color: $dark-color;
+    min-width: 10rem;
+    margin: auto;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    border: 1px solid $light-color;
+    @include easeOut;
+
+    p {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    &:hover {
+      background-color: $secondary-color;
+    }
+  }
+
+  &-choices {
+    background-color: $dark-color;
+    display: grid;
+    grid-column-gap: 0.6rem;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid $light-color;
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    top: 5.2rem;
+    left: 0;
+    padding: 1rem 1.8rem;
+
+    &-item {
+      font-size: 1.6rem;
+      padding: 0.6rem 0rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: $light-color;
+        color: $dark-color;
+
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.section__movie__list {
+  position: relative;
+  z-index: 0;
+  &-grid {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5rem;
+  }
+
+  &-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 35rem;
+    margin: 4rem auto;
+  }
+
+  &-item {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    @include easeOut;
+
+    &:hover {
+      background-color: $main-color;
+    }
+
+    .poster {
+      border-radius: 6px;
+      overflow: hidden;
+      img {
+        height: 32rem;
+        object-fit: cover;
+      }
+    }
+
+    .movie__info {
+      margin-top: 1.5rem;
+      padding: 0rem 1.2rem;
+      padding-bottom: 1rem;
+
+      &-title {
+        line-height: 1.2;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      &-rating {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        i {
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+}
+
+#footer {
+  background-color: darken($dark-color, 10);
+  padding: 3rem;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+  p {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.4rem;
   }
 }
 

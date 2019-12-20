@@ -1,7 +1,7 @@
 import React from 'react';
 import Swiper from 'swiper';
 import { Link } from 'react-router-dom';
-import { findGenreById } from '../../utils/utilities';
+import MovieInfo from './MovieInfo';
 
 class MovieCarousel extends React.Component {
   constructor(props) {
@@ -36,6 +36,7 @@ class MovieCarousel extends React.Component {
   }
 
   render() {
+    console.log(this.props.mediaType);
     return (
       <div className="swiper-container" ref={this.myRef}>
         <div className="swiper-wrapper">
@@ -47,7 +48,9 @@ class MovieCarousel extends React.Component {
               style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/w300/${movie.poster_path})`
               }}
-            ></Link>
+            >
+              <MovieInfo mediaType={this.props.mediaType} movie={movie} />
+            </Link>
           ))}
         </div>
 
