@@ -1,11 +1,11 @@
 import React from 'react';
 import ActorCarousel from '../Carousels/ActorCarousel';
-import { getMovieDetails } from '../../actions/movie';
+import Review from './Review';
 
 function Body({ movies, cast }) {
   console.log(cast);
   return (
-    <div className="movie__details__body" style={{ height: '100vh' }}>
+    <div className="movie__details__body">
       <div className="movie__details__body-poster">
         <img
           src={`https://image.tmdb.org/t/p/w1280${movies.poster_path}`}
@@ -15,7 +15,7 @@ function Body({ movies, cast }) {
       </div>
 
       <div className="movie__details__body-content">
-        <h4 className="movie__details__body-content-title">Overview</h4>
+        <h4 className="movie__details__body-content-title mb-1">Overview</h4>
         <p className="text-desc mb-2">{movies.overview}</p>
         <p className="text-desc">
           <span className="text-bold text-primary">Produced By: </span>
@@ -29,6 +29,7 @@ function Body({ movies, cast }) {
         </p>
         <h4 className="movie__details__body-content-title mt-4">Cast</h4>
         {cast.loading ? null : <ActorCarousel cast={cast.list} />}
+        <Review id={movies.id} />
       </div>
 
       <div className="movie__details__body-video"></div>

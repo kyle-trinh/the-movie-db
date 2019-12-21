@@ -475,6 +475,7 @@ body {
   grid-template-areas: 'poster content video';
   grid-template-columns: 1fr 2.5fr 1.5fr;
   color: $dark-color;
+  padding-bottom: 8rem;
 
   &-poster {
     grid-area: poster;
@@ -496,7 +497,6 @@ body {
     &-title {
       font-size: 2.8rem;
       color: $main-color;
-      margin-bottom: 1rem;
 
       &:after {
         display: block;
@@ -504,6 +504,34 @@ body {
         height: 3px;
         width: 4.5rem;
         background-color: $main-color;
+      }
+    }
+
+    &-review {
+      .review {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        color: $dark-color;
+        margin-bottom: 2rem;
+
+        img {
+          width: 150px;
+          margin-right: 2.5rem;
+        }
+
+        &-details {
+          .review-author {
+            font-size: 1.8rem;
+            color: $main-color;
+          }
+
+          .review-link {
+            font-size: 1.4rem;
+            color: $main-color;
+            text-decoration: underline;
+          }
+        }
       }
     }
   }

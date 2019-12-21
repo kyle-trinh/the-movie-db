@@ -37,11 +37,11 @@ export function findIdByGenre(name, type = MOVIE) {
   return movieFound.id;
 }
 
-export function shortenOverview(description) {
-  if (description.split(' ').length > 40) {
+export function shortenOverview(description, limit = 40) {
+  if (description.split(' ').length > limit) {
     description = description
       .split(' ')
-      .splice(0, 40)
+      .splice(0, limit)
       .join(' ');
 
     description += '...';

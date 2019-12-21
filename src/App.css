@@ -1381,7 +1381,8 @@ body {
   display: grid;
   grid-template-areas: 'poster content video';
   grid-template-columns: 1fr 2.5fr 1.5fr;
-  color: #333; }
+  color: #333;
+  padding-bottom: 8rem; }
   .movie__details__body-poster {
     grid-area: poster;
     padding: 2.5rem 2rem; }
@@ -1396,14 +1397,29 @@ body {
     overflow: hidden; }
     .movie__details__body-content-title {
       font-size: 2.8rem;
-      color: #2980b9;
-      margin-bottom: 1rem; }
+      color: #2980b9; }
       .movie__details__body-content-title:after {
         display: block;
         content: '';
         height: 3px;
         width: 4.5rem;
         background-color: #2980b9; }
+    .movie__details__body-content-review .review {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      color: #333;
+      margin-bottom: 2rem; }
+      .movie__details__body-content-review .review img {
+        width: 150px;
+        margin-right: 2.5rem; }
+      .movie__details__body-content-review .review-details .review-author {
+        font-size: 1.8rem;
+        color: #2980b9; }
+      .movie__details__body-content-review .review-details .review-link {
+        font-size: 1.4rem;
+        color: #2980b9;
+        text-decoration: underline; }
 
 #footer {
   background-color: #1a1a1a;
