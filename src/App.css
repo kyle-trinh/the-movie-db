@@ -5,6 +5,9 @@
   overflow: hidden;
   padding: 0 2.4rem; }
 
+.text-desc {
+  font-size: 1.6rem; }
+
 .text-lead {
   font-size: 2rem;
   margin-bottom: 3rem; }
@@ -299,6 +302,43 @@ section {
   height: 3px;
   width: 5rem;
   background-color: #f1c40f; }
+
+.actor-container {
+  height: 24rem; }
+  .actor-container .swiper-slide {
+    border-radius: 2px;
+    margin-top: 2rem;
+    cursor: default; }
+    .actor-container .swiper-slide .actor__info {
+      position: absolute;
+      z-index: 2;
+      opacity: 0;
+      visibility: hidden;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.5s ease-out; }
+      .actor-container .swiper-slide .actor__info-name {
+        font-size: 1.6rem; }
+        .actor-container .swiper-slide .actor__info-name:after {
+          content: '';
+          display: block;
+          height: 3px;
+          width: 3rem;
+          background-color: #f1c40f;
+          margin: auto; }
+      .actor-container .swiper-slide .actor__info-character {
+        font-size: 1.3rem;
+        text-align: center; }
+    .actor-container .swiper-slide:hover .actor__info {
+      opacity: 1;
+      visibility: visible; }
 
 .navbar {
   position: absolute;
@@ -1340,10 +1380,30 @@ body {
   overflow: hidden;
   display: grid;
   grid-template-areas: 'poster content video';
-  grid-template-columns: 1fr 2.5fr 1.5fr; }
+  grid-template-columns: 1fr 2.5fr 1.5fr;
+  color: #333; }
   .movie__details__body-poster {
     grid-area: poster;
     padding: 2.5rem 2rem; }
+  .movie__details__body-title {
+    color: #2980b9;
+    font-size: 2.6rem;
+    line-height: 1.2;
+    margin-top: 1.5rem; }
+  .movie__details__body-content {
+    grid-area: content;
+    padding: 6rem 2rem;
+    overflow: hidden; }
+    .movie__details__body-content-title {
+      font-size: 2.8rem;
+      color: #2980b9;
+      margin-bottom: 1rem; }
+      .movie__details__body-content-title:after {
+        display: block;
+        content: '';
+        height: 3px;
+        width: 4.5rem;
+        background-color: #2980b9; }
 
 #footer {
   background-color: #1a1a1a;

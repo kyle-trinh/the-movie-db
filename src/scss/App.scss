@@ -474,10 +474,38 @@ body {
   display: grid;
   grid-template-areas: 'poster content video';
   grid-template-columns: 1fr 2.5fr 1.5fr;
+  color: $dark-color;
 
   &-poster {
     grid-area: poster;
     padding: 2.5rem 2rem;
+  }
+
+  &-title {
+    color: $main-color;
+    font-size: 2.6rem;
+    line-height: 1.2;
+    margin-top: 1.5rem;
+  }
+
+  &-content {
+    grid-area: content;
+    padding: 6rem 2rem;
+    overflow: hidden;
+
+    &-title {
+      font-size: 2.8rem;
+      color: $main-color;
+      margin-bottom: 1rem;
+
+      &:after {
+        display: block;
+        content: '';
+        height: 3px;
+        width: 4.5rem;
+        background-color: $main-color;
+      }
+    }
   }
 }
 
