@@ -1,6 +1,7 @@
 import React from 'react';
 import ActorCarousel from '../Carousels/ActorCarousel';
 import Review from './Review';
+import Trailers from './Trailers';
 
 function Body({ movies, cast }) {
   console.log(cast);
@@ -32,7 +33,9 @@ function Body({ movies, cast }) {
         <Review id={movies.id} />
       </div>
 
-      <div className="movie__details__body-video"></div>
+      <div className="movie__details__body-video">
+        <Trailers id={movies.id} />
+      </div>
     </div>
   );
 }

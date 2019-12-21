@@ -17,6 +17,7 @@ import {
   MOVIE,
   TVSHOW
 } from '../../constants';
+import SpinnerSm from '../Layout/SpinnerSm';
 
 class CarouselContainer extends React.Component {
   render() {
@@ -40,38 +41,47 @@ class CarouselContainer extends React.Component {
 const GetPopular = withMovieFetching(
   CarouselContainer,
   getPopularMovies,
-  GET_POPULAR_MOVIES
+  GET_POPULAR_MOVIES,
+  MOVIE,
+  SpinnerSm
 );
 const GetTopRated = withMovieFetching(
   CarouselContainer,
   getTopRatedMovies,
-  GET_TOP_RATED_MOVIES
+  GET_TOP_RATED_MOVIES,
+  MOVIE,
+  SpinnerSm
 );
 const GetNowPlaying = withMovieFetching(
   CarouselContainer,
   getNowPlayingMovies,
-  GET_NOW_PLAYING_MOVIES
+  GET_NOW_PLAYING_MOVIES,
+  MOVIE,
+  SpinnerSm
 );
 
 const GetPopularTV = withMovieFetching(
   CarouselContainer,
   getPopularTV,
   GET_POPULAR_TV,
-  TVSHOW
+  TVSHOW,
+  SpinnerSm
 );
 
 const GetNowPlayingTV = withMovieFetching(
   CarouselContainer,
   getNowPlayingTV,
   GET_NOW_PLAYING_TV,
-  TVSHOW
+  TVSHOW,
+  SpinnerSm
 );
 
 const GetTopRatedTV = withMovieFetching(
   CarouselContainer,
   getTopRatedTV,
   GET_TOP_RATED_TV,
-  TVSHOW
+  TVSHOW,
+  SpinnerSm
 );
 
 export {

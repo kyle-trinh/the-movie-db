@@ -1298,7 +1298,8 @@ body {
     color: #333;
     padding: 0.2rem 0.8rem;
     border-radius: 2px;
-    font-weight: 700; }
+    font-weight: 700;
+    display: inline-block; }
   .header__movie__info-detail-title {
     font-size: 5.5rem;
     text-transform: uppercase;
@@ -1420,6 +1421,16 @@ body {
         font-size: 1.4rem;
         color: #2980b9;
         text-decoration: underline; }
+  .movie__details__body-video {
+    grid-area: video;
+    background-color: #c1c1c1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 2rem 2rem;
+    position: relative; }
 
 #footer {
   background-color: #1a1a1a;
