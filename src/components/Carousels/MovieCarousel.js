@@ -1,5 +1,4 @@
 import React from 'react';
-import Swiper from 'swiper';
 import { Link } from 'react-router-dom';
 import MovieInfo from './MovieInfo';
 import Carousel from './Carousel';
@@ -10,7 +9,9 @@ class MovieCarousel extends React.Component {
       <Carousel slidesPerView="5">
         {this.props.movies.map(movie => (
           <Link
-            to={`/movies/details/${movie.id}`}
+            to={`/${
+              this.props.mediaType === 'MOVIE' ? 'movies' : 'tv'
+            }/details/${movie.id}`}
             key={movie.id}
             className="swiper-slide"
             style={{

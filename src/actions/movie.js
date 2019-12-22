@@ -106,6 +106,8 @@ export function getMovieByGenre(genreId, page = 1, mediaType = MOVIE) {
 }
 
 export function getMovieDetails(id, mediaType = MOVIE) {
+  console.log(mediaType);
+  console.log('hello');
   return async function(dispatch) {
     try {
       const res = await axios.get(

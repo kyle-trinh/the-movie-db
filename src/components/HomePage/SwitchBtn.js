@@ -1,5 +1,4 @@
 import React from 'react';
-import { MOVIE, TVSHOW } from '../../constants';
 
 function SwitchBtn(props) {
   return (

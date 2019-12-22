@@ -4,7 +4,7 @@ import Body from './Body';
 import { getMovieDetails } from '../../actions/movie';
 import withMovieFetching from '../HOC/withMovieFetching';
 import { GET_DETAIL_MOVIES } from '../../constants';
-import { PATH_BASE, API_KEY } from '../../constants';
+import { PATH_BASE, API_KEY, MOVIE, TVSHOW } from '../../constants';
 import axios from 'axios';
 import DataFetchContext from './context';
 import Spinner from '../Layout/Spinner';
@@ -30,7 +30,7 @@ class MovieDetail extends React.Component {
 
   async componentDidMount() {
     const cast = await axios.get(
-      `${PATH_BASE}/${this.props.mediaType === 'MOVIE' ? 'movie' : 'tv'}/${
+      `${PATH_BASE}/${this.props.mediaType === MOVIE ? 'movie' : 'tv'}/${
         this.props.movies.id
       }/credits?api_key=${API_KEY}`
     );
@@ -45,7 +45,7 @@ class MovieDetail extends React.Component {
     const trailers = await axios.get(
       `${PATH_BASE}/movie/${this.props.movies.id}/videos?api_key=${API_KEY}`
     );
-
+    console.log(trailers);
     this.setState({
       trailers: {
         list: trailers.data.results,
@@ -81,7 +81,7 @@ class MovieDetail extends React.Component {
         }
       });
       const res = await axios.get(
-        `${PATH_BASE}/${this.props.mediaType === 'MOVIE' ? 'movie' : 'tv'}/${
+        `${PATH_BASE}/${this.props.mediaType === MOVIE ? 'movie' : 'tv'}/${
           this.props.movies.id
         }/credits?api_key=${API_KEY}`
       );
@@ -94,7 +94,9 @@ class MovieDetail extends React.Component {
       });
 
       const trailers = await axios.get(
-        `${PATH_BASE}/movie/${this.props.movies.id}/videos?api_key=${API_KEY}`
+        `${PATH_BASE}/${this.props.mediaType === MOVIE ? 'movie' : 'tv'}/${
+          this.props.movies.id
+        }/videos?api_key=${API_KEY}`
       );
 
       this.setState({
@@ -105,7 +107,9 @@ class MovieDetail extends React.Component {
       });
 
       const reviews = await axios.get(
-        `${PATH_BASE}/movie/${this.props.movies.id}/reviews?api_key=${API_KEY}`
+        `${PATH_BASE}/${this.props.mediaType === MOVIE ? 'movie' : 'tv'}/${
+          this.props.movies.id
+        }/reviews?api_key=${API_KEY}`
       );
 
       this.setState({
@@ -132,10 +136,28 @@ class MovieDetail extends React.Component {
   }
 }
 
-export default withMovieFetching(
+const MovieDetailPage = withMovieFetching(
   MovieDetail,
   getMovieDetails,
   GET_DETAIL_MOVIES,
-  'MOVIE',
+  MOVIE,
   Spinner
 );
+
+const TVDetailPage = withMovieFetching(
+  MovieDetail,
+  getMovieDetails,
+  GET_DETAIL_MOVIES,
+  TVSHOW,
+  Spinner
+);
+
+export { MovieDetailPage, TVDetailPage };
+
+// export default withMovieFetching(
+//   MovieDetail,
+//   getMovieDetails,
+//   GET_DETAIL_MOVIES,
+//   'MOVIE',
+//   Spinner
+// );

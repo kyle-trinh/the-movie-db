@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { TVSHOW, MOVIE } from '../../constants';
+import { TVSHOW, MOVIE, GET_DETAIL_MOVIES } from '../../constants';
 // import SpinnerSm from '../Layout/SpinnerSm';
 
 function getDisplayName(Component) {
@@ -17,7 +17,7 @@ function withMovieFetching(
   class HOComponent extends React.Component {
     componentDidMount() {
       if (this.props.match && this.props.match.params.id) {
-        this.props.fetchMovie(this.props.match.params.id);
+        this.props.fetchMovie(this.props.match.params.id, mediaType);
       } else {
         this.props.fetchMovie();
       }
@@ -34,7 +34,7 @@ function withMovieFetching(
   }
 
   function mapStateToProps(state) {
-    if (mediaType === MOVIE) {
+    if (mediaType === MOVIE || movieType === GET_DETAIL_MOVIES) {
       return {
         movies: state.movie.movies[movieType],
         loading: state.movie.loading[movieType]

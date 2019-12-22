@@ -1,16 +1,15 @@
 import React from 'react';
-import axios from 'axios';
-import { PATH_BASE, API_KEY } from '../../constants';
 import SpinnerSm from '../Layout/SpinnerSm';
 import { withDataFetch } from './context';
 
 function Trailers({ data }) {
+  console.log(data.trailers);
   function renderResult() {
     if (data.trailers.list.length === 0) {
       return <p className="text-lead">No Trailers Avalable!</p>;
     }
     return data.trailers.list
-      .splice(0, 5)
+      .slice(0, 5)
       .map(trailer => (
         <iframe
           key={trailer.id}

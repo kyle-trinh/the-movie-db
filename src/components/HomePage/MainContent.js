@@ -9,7 +9,6 @@ import {
   GetPopularTV,
   GetTopRatedTV
 } from './CarouselContainer';
-import { getNowPlayingMovies, getPopularMovies } from '../../actions/movie';
 
 class MainContent extends React.Component {
   constructor(props) {
@@ -65,9 +64,6 @@ class MainContent extends React.Component {
                 <div className="movie__list__carousel__container">
                   <GetPopularTV header="Popular TV" />
                 </div>
-                {/* <GetNowPlayingTV header="Now Playing TV" />
-                <GetTopRatedTV header="Top Rated TV" />
-                <GetPopularTV header="Popular TV" /> */}
               </>
             )}
           </section>

@@ -1,6 +1,4 @@
 import React from 'react';
-import Swiper from 'swiper';
-import { Link } from 'react-router-dom';
 import ActorInfo from './ActorInfo';
 import Carousel from './Carousel';
 

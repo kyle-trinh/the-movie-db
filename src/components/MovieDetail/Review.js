@@ -3,37 +3,6 @@ import { shortenOverview } from '../../utils/utilities';
 import { withDataFetch } from './context';
 
 function Review({ data }) {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     reviews: {
-  //       list: null,
-  //       loading: true
-  //     }
-  //   };
-  // }
-
-  // async componentDidMount() {
-  //   var res;
-  //   try {
-  //     res = await axios.get(
-  //       `${PATH_BASE}/movie/${this.props.id}/reviews?api_key=${API_KEY}`
-  //     );
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-
-  //   this.setState({
-  //     reviews: {
-  //       list: res.data.results,
-  //       loading: false
-  //     }
-  //   });
-
-  //   console.log(res);
-  // }
-
-  // render() {
   return (
     <div className="movie__details__body-content-review">
       <h4 className="movie__details__body-content-title mt-4 mb-2">
@@ -53,7 +22,12 @@ function Review({ data }) {
                 <p className="text-desc">
                   {shortenOverview(review.content, 30)}
                 </p>
-                <a className="review-link" href={review.url} target="_blank">
+                <a
+                  className="review-link"
+                  href={review.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Read more >>
                 </a>
               </div>
@@ -61,7 +35,6 @@ function Review({ data }) {
           ))}
     </div>
   );
-  // }
 }
 
 export default withDataFetch(Review);
