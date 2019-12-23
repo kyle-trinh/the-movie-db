@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MENU_ITEMS } from '../../constants';
 import { withRouter } from 'react-router-dom';
+import { MOVIE, TVSHOW } from '../../constants';
 
 function handleCurrentChange(pathname) {
   var prefix = pathname.split('/')[1];
-  if (prefix === 'movies') {
+  if (prefix === MOVIE) {
     return 'movies';
-  } else if (prefix === 'tv') {
+  } else if (prefix === TVSHOW) {
     return 'tv shows';
   } else if (prefix === '') {
     return 'home';

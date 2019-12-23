@@ -3,11 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ScrollToTop, Navbar, Footer } from './components/Layout';
 import Landing from './components/HomePage/Landing';
 import Movie from './components/Movies';
-import { MovieDetailPage, TVDetailPage } from './components/MovieDetail';
-import withMovieFetching from './components/HOC/withMovieFetching';
-import { MOVIE, TVSHOW, GET_DETAIL_MOVIES } from './constants';
-import { getMovieDetails } from './actions/movie';
-
+import MovieDetail from './components/MovieDetail';
 import './App.css';
 
 function App() {
@@ -21,28 +17,20 @@ function App() {
             <Route
               exact
               path="/:mediaType/:genre/page=:pageNum"
-              render={function(props) {
-                return (
-                  <Movie
-                    {...props}
-                    mediaType={
-                      props.match.params.mediaType === 'movies' ? MOVIE : TVSHOW
-                    }
-                  />
-                );
-              }}
+              component={Movie}
               // component={Movie}
             />
             <Route
               exact
               path="/:mediaType/details/:id"
-              render={function(props) {
-                if (props.match.params.mediaType === 'movies') {
-                  return <MovieDetailPage {...props} mediaType={MOVIE} />;
-                } else if (props.match.params.mediaType === 'tv') {
-                  return <TVDetailPage {...props} mediaType={TVSHOW} />;
-                }
-              }}
+              component={MovieDetail}
+              // render={function(props) {
+              //   if (props.match.params.mediaType === MOVIE) {
+              //     return <MovieDetailPage {...props} mediaType={MOVIE} />;
+              //   } else if (props.match.params.mediaType === TVSHOW) {
+              //     return <TVDetailPage {...props} mediaType={TVSHOW} />;
+              //   }
+              // }}
             />
           </Switch>
           <Footer />

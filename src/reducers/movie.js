@@ -10,7 +10,8 @@ import {
   GET_CREDIT,
   GET_DETAIL_MOVIES,
   GET_GENRE_SET_LOADING,
-  GET_MOVIES_BY_GENRE
+  GET_MOVIES_BY_GENRE,
+  GET_DETAIL_SET_LOADING
 } from '../constants/types';
 
 const movieLists = [
@@ -84,6 +85,15 @@ export default function(state = initialState, action) {
         loading: {
           ...state.loading,
           [GET_MOVIES_BY_GENRE]: true
+        }
+      };
+
+    case GET_DETAIL_SET_LOADING:
+      return {
+        ...state,
+        loading: {
+          ...state.loading,
+          [GET_DETAIL_MOVIES]: true
         }
       };
 

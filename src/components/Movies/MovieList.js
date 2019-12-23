@@ -12,7 +12,11 @@ function MovieList({ movies, currentPg, currentGenre, mediaType }) {
         <div className="section__movie__list-grid">
           {movies.results.map(function mapMovie(movie) {
             return (
-              <Link key={movie.id} to="/" className="section__movie__list-item">
+              <Link
+                key={movie.id}
+                to={`/${mediaType}/details/${movie.id}`}
+                className="section__movie__list-item"
+              >
                 <div className="poster">
                   <img
                     src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
@@ -45,7 +49,7 @@ function MovieList({ movies, currentPg, currentGenre, mediaType }) {
         <PageBtn
           currentPg={currentPg}
           currentGenre={currentGenre}
-          mediaType={mediaType === 'MOVIE' ? 'movies' : 'tv'}
+          mediaType={mediaType}
         />
       </div>
     </section>

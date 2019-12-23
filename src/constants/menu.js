@@ -4,7 +4,7 @@ const MENU_ITEMS = [
     title: 'Home'
   },
   {
-    url: '/movies/comedy/page=1',
+    url: '/movie/comedy/page=1',
     title: 'Movies'
   },
   {

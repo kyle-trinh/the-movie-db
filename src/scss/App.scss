@@ -509,6 +509,7 @@ body {
     }
 
     &-review {
+      position: relative;
       .review {
         display: flex;
         align-items: flex-start;

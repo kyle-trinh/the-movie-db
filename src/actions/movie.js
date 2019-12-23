@@ -111,9 +111,7 @@ export function getMovieDetails(id, mediaType = MOVIE) {
   return async function(dispatch) {
     try {
       const res = await axios.get(
-        `${PATH_BASE}/${
-          mediaType === MOVIE ? 'movie' : 'tv'
-        }/${id}?api_key=${API_KEY}&language=en-US`
+        `${PATH_BASE}/${mediaType}/${id}?api_key=${API_KEY}&language=en-US`
       );
 
       dispatch({

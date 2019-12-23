@@ -4,7 +4,6 @@ import Review from './Review';
 import Trailers from './Trailers';
 
 function Body({ movies, cast }) {
-  console.log(cast);
   return (
     <div className="movie__details__body">
       <div className="movie__details__body-poster">
@@ -26,7 +25,7 @@ function Body({ movies, cast }) {
           <span className="text-bold text-primary">Avalable in: </span>
           {movies.spoken_languages
             ? movies.spoken_languages.map(language => language.name).join(', ')
-            : movies.languages.map(language => language.name).join(', ')}
+            : movies.languages.map(language => language).join(', ')}
         </p>
         <h4 className="movie__details__body-content-title mt-4">Cast</h4>
         {cast.loading ? null : <ActorCarousel cast={cast.list} />}

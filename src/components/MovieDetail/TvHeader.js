@@ -1,12 +1,6 @@
 import React from 'react';
 
-function Header({ movies }) {
-  const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0
-  });
-
+function TvHeader({ movies }) {
   return (
     <header id="header__movie-detail">
       <div
@@ -30,22 +24,19 @@ function Header({ movies }) {
 
           <div className="header__movie__info-detail">
             <div className="header__movie__info-detail-tagline">
-              {movies.tagline || 'No Tagline Avalable'}
+              {`Last Air Date: ${movies.last_air_date}`}
             </div>
 
             <h1 className="header__movie__info-detail-title">{movies.title}</h1>
 
             <p className="header__movie__info-detail-genre">
-              {(movies.runtime || 'Unavalable') +
-                ' min | ' +
+              {`${movies.number_of_seasons} seasons | ` +
                 movies.genres.map(genre => genre.name).join(' - ')}
             </p>
 
             <button
               className="btn-primary"
-              onClick={() => {
-                window.scrollTo(0, 885);
-              }}
+              onClick={() => window.scrollTo(0, 885)}
             >
               <div className="btn-primary-overlay"></div>
               <p>Read More</p>
@@ -63,15 +54,17 @@ function Header({ movies }) {
             </p>
           </div>
           <div className="header__movie__bottom-stats-item">
-            <h4 className="header__movie__bottom-stats-item-title">Budget</h4>
+            <h4 className="header__movie__bottom-stats-item-title">Status</h4>
             <p className="header__movie__bottom-stats-item-subtext">
-              {formatter.format(movies.budget)}
+              {movies.status}
             </p>
           </div>
           <div className="header__movie__bottom-stats-item">
-            <h4 className="header__movie__bottom-stats-item-title">Revenue</h4>
+            <h4 className="header__movie__bottom-stats-item-title">
+              Total Episodes
+            </h4>
             <p className="header__movie__bottom-stats-item-subtext">
-              {formatter.format(movies.revenue)}
+              {movies.number_of_episodes}
             </p>
           </div>
         </div>
@@ -92,4 +85,4 @@ function Header({ movies }) {
   );
 }
 
-export default Header;
+export default TvHeader;

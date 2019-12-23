@@ -16,12 +16,12 @@ class Movie extends React.Component {
   }
 
   componentDidMount() {
-    const { pageNum, genre } = this.props.match.params;
+    const { pageNum, genre, mediaType } = this.props.match.params;
 
     this.props.getMovieByGenre(
-      findIdByGenre(genre, this.props.mediaType),
+      findIdByGenre(genre, mediaType),
       pageNum,
-      this.props.mediaType
+      mediaType
     );
   }
 
@@ -37,29 +37,28 @@ class Movie extends React.Component {
         type: GET_GENRE_SET_LOADING
       });
       this.props.getMovieByGenre(
-        findIdByGenre(genre, this.props.mediaType),
+        findIdByGenre(genre, mediaType),
         pageNum,
-        this.props.mediaType
+        mediaType
       );
     }
   }
 
   render() {
     console.log(this.props.mediaType);
+
+    const { pageNum, mediaType, genre } = this.props.match.params;
     return (
       <div className="movie__list">
-        <Header
-          currentGenre={this.props.match.params.genre}
-          mediaType={this.props.mediaType}
-        />
+        <Header currentGenre={genre} mediaType={mediaType} />
         {this.props.loading ? (
           <Spinner />
         ) : (
           <MovieList
             movies={this.props.movies}
-            currentPg={this.props.match.params.pageNum}
-            currentGenre={this.props.match.params.genre}
-            mediaType={this.props.mediaType}
+            currentPg={pageNum}
+            currentGenre={genre}
+            mediaType={mediaType}
           />
         )}
       </div>

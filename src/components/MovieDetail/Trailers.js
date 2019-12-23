@@ -2,13 +2,12 @@ import React from 'react';
 import SpinnerSm from '../Layout/SpinnerSm';
 import { withDataFetch } from './context';
 
-function Trailers({ data }) {
-  console.log(data.trailers);
+function Trailers({ data: { trailers } }) {
   function renderResult() {
-    if (data.trailers.list.length === 0) {
+    if (trailers.list.length === 0) {
       return <p className="text-lead">No Trailers Avalable!</p>;
     }
-    return data.trailers.list
+    return trailers.list
       .slice(0, 5)
       .map(trailer => (
         <iframe
@@ -28,7 +27,7 @@ function Trailers({ data }) {
   return (
     <>
       <h2 className="movie__details__body-content-title">Trailers</h2>
-      {data.trailers.loading ? <SpinnerSm /> : renderResult()}
+      {trailers.loading ? <SpinnerSm /> : renderResult()}
     </>
   );
 }
