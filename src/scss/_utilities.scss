@@ -462,3 +462,88 @@ section {
     }
   }
 }
+
+// MODAL
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 60;
+  overflow: auto;
+  padding-top: 40vh;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  &.show {
+    display: block;
+  }
+
+  .modal-content {
+    background: $light-color;
+    margin: 0 auto;
+    max-width: 50rem;
+    border-radius: 3px;
+    padding: 1.5rem;
+
+    .modal-title {
+      font-size: 2rem;
+      text-align: left;
+      color: $main-color;
+
+      &:after {
+        content: '';
+        display: block;
+        background-color: rgba(0, 0, 0, 0.2);
+        height: 1px;
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 1rem;
+      }
+    }
+
+    .modal-desc {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      text-align: left;
+      color: $dark-color;
+
+      &:after {
+        content: '';
+        display: block;
+        background-color: rgba(0, 0, 0, 0.2);
+        height: 1px;
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .action {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+  }
+}
+
+// CSS TRANSITION GROUP
+.alert-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.alert-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.alert-exit {
+  opacity: 1;
+}
+.alert-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}

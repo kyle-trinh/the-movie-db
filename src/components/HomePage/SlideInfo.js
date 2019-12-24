@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { findGenreById, shortenOverview } from '../../utils/utilities';
+import InProgress from '../Layout/InProgress';
 
 function SlideInfo({ movie }) {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="movie__info">
       <h3 className="movie__info__genre">
@@ -16,11 +19,17 @@ function SlideInfo({ movie }) {
           <p>More Info</p>
           <div className="btn-primary-overlay" />
         </Link>
-        <Link to="/" className="btn-secondary">
+        <Link
+          to="/"
+          className="btn-secondary"
+          onClick={() => setShowModal(true)}
+        >
           <p>Add to List</p>
           <div className="btn-secondary-overlay" />
         </Link>
       </div>
+
+      <InProgress showModal={showModal} setShowModal={setShowModal} />
     </div>
   );
 }

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { MENU_ITEMS } from '../../constants';
 import { withRouter } from 'react-router-dom';
 import { MOVIE, TVSHOW } from '../../constants';
+import InProgress from './InProgress';
+import SearchBox from './SearchBox';
 
 function handleCurrentChange(pathname) {
   var prefix = pathname.split('/')[1];
@@ -19,7 +21,8 @@ class Navbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: handleCurrentChange(this.props.location.pathname)
+      current: handleCurrentChange(this.props.location.pathname),
+      showModal: false
     };
   }
 
@@ -65,20 +68,19 @@ class Navbar extends React.Component {
             </div>
 
             <div className="search-box-profile">
-              <form>
-                <input
-                  type="text"
-                  placeholder="Enter a movie name..."
-                  className="search-input"
-                />
-                <button className="search-btn">
-                  <i className="fas fa-search"></i>
-                </button>
-              </form>
-              <div className="profile"></div>
+              <SearchBox />
+              <div
+                className="profile"
+                onClick={() => this.setState({ showModal: true })}
+              ></div>
             </div>
           </nav>
         </div>
+
+        <InProgress
+          showModal={this.state.showModal}
+          setShowModal={() => this.setState({ showModal: false })}
+        />
       </div>
     );
   }

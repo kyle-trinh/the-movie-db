@@ -6,6 +6,10 @@
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 1000;
 
+  .container {
+    overflow: visible;
+  }
+
   .menu {
     display: flex;
     justify-content: space-between;
@@ -70,12 +74,14 @@
       form {
         display: flex;
         justify-content: space-between;
+        position: relative;
         align-items: center;
         width: 25rem;
         background-color: $light-color;
         padding: 1rem;
         padding-left: 1.5rem;
-        border-radius: 8rem;
+        border-radius: 6px;
+        border: 1px solid $dark-color;
 
         .search-input {
           border: none;
@@ -92,6 +98,56 @@
           padding-left: 1rem;
           cursor: pointer;
           outline: none;
+        }
+
+        .result__container {
+          position: absolute;
+          top: 3.8rem;
+          left: 0;
+          width: 100%;
+          min-height: 5rem;
+          z-index: -1;
+          padding-top: 1rem;
+          box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
+          background-color: $light-color;
+          color: $dark-color;
+          border-radius: 4px;
+
+          .see-more {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background-color: $main-color;
+            padding: 0.8rem 0;
+            color: $light-color;
+            font-size: 700;
+          }
+
+          .result-item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            color: $dark-color;
+            font-size: 1.4rem;
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-bottom: 2px solid $medium-color;
+            cursor: pointer;
+            @include easeOut;
+
+            &.highlighted {
+              background-color: $main-color;
+              color: $light-color;
+            }
+
+            img {
+              width: 40px;
+              height: 40px;
+              object-fit: cover;
+              margin-right: 1.5rem;
+            }
+          }
         }
       }
     }

@@ -4,6 +4,7 @@ import { ScrollToTop, Navbar, Footer } from './components/Layout';
 import Landing from './components/HomePage/Landing';
 import Movie from './components/Movies';
 import MovieDetail from './components/MovieDetail';
+import SearchResult from './components/SearchResult';
 import './App.css';
 
 function App() {
@@ -32,6 +33,8 @@ function App() {
               //   }
               // }}
             />
+
+            <Route exact path="/search/q=:query" component={SearchResult} />
           </Switch>
           <Footer />
         </Fragment>

@@ -13,7 +13,8 @@ import {
   SET_LOADING,
   MOVIE_ERROR,
   MOVIE,
-  TVSHOW
+  TVSHOW,
+  SEARCH_MOVIES
 } from '../constants';
 import { GET_MOVIES_BY_GENRE } from '../constants/types';
 
@@ -106,8 +107,6 @@ export function getMovieByGenre(genreId, page = 1, mediaType = MOVIE) {
 }
 
 export function getMovieDetails(id, mediaType = MOVIE) {
-  console.log(mediaType);
-  console.log('hello');
   return async function(dispatch) {
     try {
       const res = await axios.get(
@@ -117,6 +116,23 @@ export function getMovieDetails(id, mediaType = MOVIE) {
       dispatch({
         type: GET_DETAIL_MOVIES,
         payload: res.data
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}
+
+export function searchMovies(query) {
+  return async function(dispatch) {
+    try {
+      const res = await axios.get(
+        `${PATH_BASE}/search/multi/?api_key=${API_KEY}&query=${query}`
+      );
+
+      dispatch({
+        type: SEARCH_MOVIES,
+        payload: res.data.results
       });
     } catch (err) {
       console.log(err);

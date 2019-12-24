@@ -11,7 +11,8 @@ import {
   GET_DETAIL_MOVIES,
   GET_GENRE_SET_LOADING,
   GET_MOVIES_BY_GENRE,
-  GET_DETAIL_SET_LOADING
+  GET_DETAIL_SET_LOADING,
+  SEARCH_MOVIES
 } from '../constants/types';
 
 const movieLists = [
@@ -24,7 +25,8 @@ const movieLists = [
   SET_LOADING,
   GET_CREDIT,
   GET_MOVIES_BY_GENRE,
-  GET_DETAIL_MOVIES
+  GET_DETAIL_MOVIES,
+  SEARCH_MOVIES
 ];
 
 const initialState = {
@@ -38,7 +40,8 @@ const initialState = {
     [SET_LOADING]: null,
     [GET_CREDIT]: null,
     [GET_MOVIES_BY_GENRE]: null,
-    [GET_DETAIL_MOVIES]: null
+    [GET_DETAIL_MOVIES]: null,
+    [SEARCH_MOVIES]: null
   },
 
   loading: {
@@ -51,7 +54,8 @@ const initialState = {
     [SET_LOADING]: true,
     [GET_CREDIT]: true,
     [GET_MOVIES_BY_GENRE]: true,
-    [GET_DETAIL_MOVIES]: true
+    [GET_DETAIL_MOVIES]: true,
+    [SEARCH_MOVIES]: true
   },
   errors: []
 };

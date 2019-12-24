@@ -31,6 +31,24 @@ function withMovieFetching(
       }
     }
 
+    componentDidUpdate(prevProps) {
+      if (
+        this.props.match &&
+        this.props.match.params.id &&
+        prevProps.match.params.id !== this.props.match.params.id
+      ) {
+        store.dispatch({
+          type: GET_DETAIL_SET_LOADING
+        });
+        this.props.fetchMovie(
+          this.props.match.params.id,
+          this.props.match.params.mediaType
+        );
+      } else {
+        this.props.fetchMovie();
+      }
+    }
+
     render() {
       HOComponent.displayName = `HOComponent(${getDisplayName(Component)})`;
       return this.props.loading ? (
