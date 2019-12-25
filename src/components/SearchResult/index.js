@@ -1,10 +1,40 @@
 import React from 'react';
-import withMovieFetching from '../HOC/withMovieFetching';
+import { SEARCH_MOVIES } from '../../constants';
+import Spinner from '../Layout/Spinner';
+import { connect } from 'react-redux';
+import { searchMovies } from '../../actions/movie';
+import Header from './Header';
+import MovieList from './MovieList';
 
 class SearchResult extends React.Component {
+  componentDidMount() {
+    this.props.searchMovies(this.props.match.params.query);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.query !== prevProps.match.params.query) {
+      this.props.searchMovies(this.props.match.params.query);
+    }
+  }
+
   render() {
-    return <div>Search Result</div>;
+    return this.props.loading ? (
+      <Spinner />
+    ) : (
+      <>
+        {' '}
+        <Header query={this.props.match.params.query} />{' '}
+        <MovieList movies={this.props.movies} />
+      </>
+    );
   }
 }
 
-export default SearchResult;
+function mapStateToProps(state) {
+  return {
+    movies: state.movie.movies[SEARCH_MOVIES],
+    loading: state.movie.loading[SEARCH_MOVIES]
+  };
+}
+
+export default connect(mapStateToProps, { searchMovies })(SearchResult);
