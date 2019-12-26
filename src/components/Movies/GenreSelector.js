@@ -50,9 +50,9 @@ class GenreSelector extends React.Component {
                 onClick={() => {
                   this.setState({ listToggle: !this.state.listToggle });
                 }}
-                to={`/${
-                  this.props.mediaType === MOVIE ? 'movies' : 'tv'
-                }/${normalizeGenre(genre.name).toLowerCase()}/page=1`}
+                to={`/${this.props.mediaType}/${normalizeGenre(
+                  genre.name
+                ).toLowerCase()}/page=1`}
                 key={genre.id}
                 className="genre__selector-choices-item"
               >

@@ -4,7 +4,6 @@ import Carousel from './Carousel';
 
 class ActorCarousel extends React.Component {
   render() {
-    console.log(this.props.cast);
     return (
       <Carousel slidesPerView="3" actor={true}>
         {this.props.cast.map(movie => (
@@ -13,7 +12,11 @@ class ActorCarousel extends React.Component {
             key={movie.id}
             className="swiper-slide"
             style={{
-              backgroundImage: `url(https://image.tmdb.org/t/p/w185${movie.profile_path})`
+              backgroundImage: `${
+                movie.profile_path
+                  ? `url(https://image.tmdb.org/t/p/w185${movie.profile_path}`
+                  : 'url(https://via.placeholder.com/200)'
+              } )`
             }}
           >
             <ActorInfo actor={movie} />

@@ -4,13 +4,11 @@ import TvHeader from './TvHeader';
 import Body from './Body';
 import { getMovieDetails } from '../../actions/movie';
 import withMovieFetching from '../HOC/withMovieFetching';
-import { GET_DETAIL_MOVIES } from '../../constants';
+import { GET_DETAIL_MOVIES, TVSHOW } from '../../constants';
 import { PATH_BASE, API_KEY, MOVIE } from '../../constants';
 import axios from 'axios';
 import DataFetchContext from './context';
 import Spinner from '../Layout/Spinner';
-import store from '../../store';
-import { GET_DETAIL_SET_LOADING } from '../../constants';
 
 class MovieDetail extends React.Component {
   constructor(props) {
@@ -31,9 +29,11 @@ class MovieDetail extends React.Component {
     };
     this.mediaType = this.props.match.params.mediaType;
     this.movieId = this.props.match.params.id;
+    this.fetchData = this.fetchData.bind(this);
+    this.renderHeader = this.renderHeader.bind(this);
   }
 
-  async componentDidMount() {
+  async fetchData() {
     const cast = await axios.get(
       `${PATH_BASE}/${this.mediaType}/${this.movieId}/credits?api_key=${API_KEY}`
     );
@@ -62,7 +62,19 @@ class MovieDetail extends React.Component {
     });
   }
 
-  async componentDidUpdate(prevProps) {
+  renderHeader() {
+    if (this.mediaType === MOVIE) {
+      return <Header movies={this.props.movies} />;
+    } else if (this.mediaType === TVSHOW) {
+      return <TvHeader movies={this.props.movies} />;
+    }
+  }
+
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  componentDidUpdate(prevProps) {
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.setState({
         cast: {
@@ -75,43 +87,14 @@ class MovieDetail extends React.Component {
           loading: true
         }
       });
-      const cast = await axios.get(
-        `${PATH_BASE}/${this.mediaType}/${this.movieId}/credits?api_key=${API_KEY}`
-      );
-
-      const trailers = await axios.get(
-        `${PATH_BASE}/${this.mediaType}/${this.movieId}/videos?api_key=${API_KEY}`
-      );
-
-      const reviews = await axios.get(
-        `${PATH_BASE}/${this.mediaType}/${this.movieId}/reviews?api_key=${API_KEY}`
-      );
-
-      this.setState({
-        cast: {
-          list: cast.data.cast,
-          loading: false
-        },
-        trailers: {
-          list: trailers.data.results,
-          loading: false
-        },
-        reviews: {
-          list: reviews.data.results,
-          loading: false
-        }
-      });
+      this.fetchData();
     }
   }
 
   render() {
     return (
       <DataFetchContext.Provider value={this.state}>
-        {this.mediaType === MOVIE ? (
-          <Header movies={this.props.movies} />
-        ) : (
-          <TvHeader movies={this.props.movies} />
-        )}
+        {this.renderHeader()}
 
         <Body movies={this.props.movies} cast={this.state.cast} />
       </DataFetchContext.Provider>

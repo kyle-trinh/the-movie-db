@@ -38,7 +38,6 @@ class Navbar extends React.Component {
   }
 
   render() {
-    console.log(this.props.location.pathname.split('/')[1]);
     return (
       <div className="navbar">
         <div className="container">

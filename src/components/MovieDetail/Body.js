@@ -29,11 +29,11 @@ function Body({ movies, cast }) {
         </p>
         <h4 className="movie__details__body-content-title mt-4">Cast</h4>
         {cast.loading ? null : <ActorCarousel cast={cast.list} />}
-        <Review id={movies.id} />
+        <Review />
       </div>
 
       <div className="movie__details__body-video">
-        <Trailers id={movies.id} />
+        <Trailers />
       </div>
     </div>
   );

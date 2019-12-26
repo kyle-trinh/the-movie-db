@@ -11,12 +11,17 @@ class HeaderSlide extends React.Component {
     };
   }
   componentDidMount() {
-    setInterval(() => {
+    this.id = setInterval(() => {
       this.setState({
         index: (this.state.index + 1) % this.props.movies.length
       });
     }, 6000);
   }
+
+  componentWillUnmount() {
+    clearInterval(this.id);
+  }
+
   render() {
     return (
       <Transition
