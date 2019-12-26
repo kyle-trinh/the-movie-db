@@ -2,19 +2,25 @@ import axios from 'axios';
 import {
   API_KEY,
   PATH_BASE,
-  GET_CREDIT,
   GET_DETAIL_MOVIES,
   GET_NOW_PLAYING_MOVIES,
   GET_POPULAR_MOVIES,
-  GET_REVIEWS,
   GET_TOP_RATED_MOVIES,
-  GET_TRAILER,
   GET_TRENDING_MOVIES,
-  SET_LOADING,
   MOVIE_ERROR,
   MOVIE,
-  TVSHOW,
-  SEARCH_MOVIES
+  SEARCH_MOVIES,
+  GET_TRENDING_MOVIES_ERROR,
+  GET_NOW_PLAYING_MOVIES_ERROR,
+  GET_POPULAR_MOVIES_ERROR,
+  GET_REVIEWS_ERROR,
+  GET_TOP_RATED_MOVIES_ERROR,
+  GET_TRAILER_ERROR,
+  SET_LOADING_ERROR,
+  GET_CREDIT_ERROR,
+  GET_MOVIES_BY_GENRE_ERROR,
+  GET_DETAIL_MOVIES_ERROR,
+  SEARCH_MOVIES_ERROR
 } from '../constants';
 import { GET_MOVIES_BY_GENRE } from '../constants/types';
 
@@ -31,9 +37,8 @@ export function getTrendingMovies() {
         payload: res.data.results
       });
     } catch (err) {
-      console.log(err.response.data.status_message);
       dispatch({
-        type: MOVIE_ERROR,
+        type: GET_TRENDING_MOVIES_ERROR,
         payload: err.response.data.status_message
       });
     }
@@ -52,7 +57,12 @@ export function getNowPlayingMovies() {
         type: GET_NOW_PLAYING_MOVIES,
         payload: res.data.results
       });
-    } catch (err) {}
+    } catch (err) {
+      dispatch({
+        type: GET_NOW_PLAYING_MOVIES_ERROR,
+        payload: err.response.data.status_message
+      });
+    }
   };
 }
 
@@ -68,7 +78,12 @@ export function getPopularMovies() {
         type: GET_POPULAR_MOVIES,
         payload: res.data.results
       });
-    } catch (err) {}
+    } catch (err) {
+      dispatch({
+        type: GET_POPULAR_MOVIES_ERROR,
+        payload: err.response.data.status_message
+      });
+    }
   };
 }
 
@@ -84,7 +99,12 @@ export function getTopRatedMovies() {
         type: GET_TOP_RATED_MOVIES,
         payload: res.data.results
       });
-    } catch (err) {}
+    } catch (err) {
+      dispatch({
+        type: GET_TOP_RATED_MOVIES_ERROR,
+        payload: err.response.data.status_message
+      });
+    }
   };
 }
 
@@ -102,7 +122,12 @@ export function getMovieByGenre(genreId, page = 1, mediaType = MOVIE) {
         type: GET_MOVIES_BY_GENRE,
         payload: res.data
       });
-    } catch (err) {}
+    } catch (err) {
+      dispatch({
+        type: GET_MOVIES_BY_GENRE_ERROR,
+        payload: err.response.data.status_message
+      });
+    }
   };
 }
 
@@ -118,7 +143,10 @@ export function getMovieDetails(id, mediaType = MOVIE) {
         payload: res.data
       });
     } catch (err) {
-      console.log(err);
+      dispatch({
+        type: GET_DETAIL_MOVIES_ERROR,
+        payload: err.response.data.status_message
+      });
     }
   };
 }
@@ -135,7 +163,10 @@ export function searchMovies(query) {
         payload: res.data.results
       });
     } catch (err) {
-      console.log(err);
+      dispatch({
+        type: SEARCH_MOVIES_ERROR,
+        payload: err.response.data.status_message
+      });
     }
   };
 }

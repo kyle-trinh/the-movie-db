@@ -2,7 +2,6 @@ import React from 'react';
 import { shortenTitle, findGenreById } from '../../utils/utilities';
 
 function MovieInfo({ movie, mediaType }) {
-  console.log(mediaType);
   return (
     <>
       <div className="carousel__movie-overlay" />

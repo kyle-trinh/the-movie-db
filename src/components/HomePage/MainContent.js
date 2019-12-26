@@ -24,13 +24,11 @@ class MainContent extends React.Component {
       this.setState({
         mediaType: TVSHOW
       });
-    } else {
+    } else if (this.state.mediaType === TVSHOW) {
       this.setState({
         mediaType: MOVIE
       });
     }
-
-    console.log(this.state.mediaType);
   }
 
   render() {

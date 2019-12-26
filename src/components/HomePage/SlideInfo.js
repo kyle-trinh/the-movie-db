@@ -15,7 +15,7 @@ function SlideInfo({ movie }) {
       <h3 className="movie__info__showtime mb-3">{movie.release_date}</h3>
       <p className="text-lead">{shortenOverview(movie.overview)}</p>
       <div className="movie__info__btn">
-        <Link to="/" className="btn-primary mr-2">
+        <Link to={`/movie/details/${movie.id}`} className="btn-primary mr-2">
           <p>More Info</p>
           <div className="btn-primary-overlay" />
         </Link>

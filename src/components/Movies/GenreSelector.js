@@ -24,7 +24,7 @@ class GenreSelector extends React.Component {
     } else if (this.props.mediaType === TVSHOW) {
       genreList = TvGenre;
     }
-    console.log(this.props.currentGenre);
+
     return (
       <div className="genre__selector">
         <div

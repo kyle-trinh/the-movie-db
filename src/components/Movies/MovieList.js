@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { findGenreById } from '../../utils/utilities';
 import PageBtn from './PageBtn';
 
-import { MOVIE, TVSHOW } from '../../constants';
-
 function MovieList({ movies, currentPg, currentGenre, mediaType }) {
   return (
     <section className="section__movie__list">

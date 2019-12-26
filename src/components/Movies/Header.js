@@ -14,8 +14,6 @@ function Header({ currentGenre, mediaType }) {
     }
   };
 
-  console.log(mediaType);
-
   return (
     <header id="header-movie">
       <div className="container">

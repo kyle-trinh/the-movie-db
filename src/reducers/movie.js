@@ -12,7 +12,18 @@ import {
   GET_GENRE_SET_LOADING,
   GET_MOVIES_BY_GENRE,
   GET_DETAIL_SET_LOADING,
-  SEARCH_MOVIES
+  SEARCH_MOVIES,
+  GET_TRENDING_MOVIES_ERROR,
+  GET_NOW_PLAYING_MOVIES_ERROR,
+  GET_POPULAR_MOVIES_ERROR,
+  GET_REVIEWS_ERROR,
+  GET_TOP_RATED_MOVIES_ERROR,
+  GET_TRAILER_ERROR,
+  SET_LOADING_ERROR,
+  GET_CREDIT_ERROR,
+  GET_MOVIES_BY_GENRE_ERROR,
+  GET_DETAIL_MOVIES_ERROR,
+  SEARCH_MOVIES_ERROR
 } from '../constants/types';
 
 const movieLists = [
@@ -27,6 +38,20 @@ const movieLists = [
   GET_MOVIES_BY_GENRE,
   GET_DETAIL_MOVIES,
   SEARCH_MOVIES
+];
+
+const errors = [
+  GET_TRENDING_MOVIES_ERROR,
+  GET_NOW_PLAYING_MOVIES_ERROR,
+  GET_POPULAR_MOVIES_ERROR,
+  GET_REVIEWS_ERROR,
+  GET_TOP_RATED_MOVIES_ERROR,
+  GET_TRAILER_ERROR,
+  SET_LOADING_ERROR,
+  GET_CREDIT_ERROR,
+  GET_MOVIES_BY_GENRE_ERROR,
+  GET_DETAIL_MOVIES_ERROR,
+  SEARCH_MOVIES_ERROR
 ];
 
 const initialState = {
@@ -57,7 +82,19 @@ const initialState = {
     [GET_DETAIL_MOVIES]: true,
     [SEARCH_MOVIES]: true
   },
-  errors: []
+  errors: {
+    [GET_TRENDING_MOVIES_ERROR]: null,
+    [GET_NOW_PLAYING_MOVIES_ERROR]: null,
+    [GET_POPULAR_MOVIES_ERROR]: null,
+    [GET_REVIEWS_ERROR]: null,
+    [GET_TOP_RATED_MOVIES_ERROR]: null,
+    [GET_TRAILER_ERROR]: null,
+    [SET_LOADING_ERROR]: null,
+    [GET_CREDIT_ERROR]: null,
+    [GET_MOVIES_BY_GENRE_ERROR]: null,
+    [GET_DETAIL_MOVIES_ERROR]: null,
+    [SEARCH_MOVIES_ERROR]: null
+  }
 };
 
 export default function(state = initialState, action) {
@@ -67,6 +104,11 @@ export default function(state = initialState, action) {
 
   if (movieLists.indexOf(type) !== -1) {
     movieList = type;
+  }
+
+  var error;
+  if (errors.indexOf(type) !== -1) {
+    error = type;
   }
 
   switch (type) {
@@ -80,6 +122,19 @@ export default function(state = initialState, action) {
         loading: {
           ...state.loading,
           [movieList]: false
+        }
+      };
+
+    case error:
+      return {
+        ...state,
+        errors: {
+          ...state.errors,
+          [error]: payload
+        },
+        loading: {
+          ...state.loading,
+          [error.slice(0, error.length - 6)]: false
         }
       };
 

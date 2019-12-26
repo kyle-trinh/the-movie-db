@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { TVSHOW, MOVIE, GET_DETAIL_MOVIES } from '../../constants';
 import store from '../../store';
 import { GET_DETAIL_SET_LOADING } from '../../constants';
-// import SpinnerSm from '../Layout/SpinnerSm';
 
 function getDisplayName(Component) {
   return Component.displayName || Component.name || 'Component';
@@ -44,9 +43,10 @@ function withMovieFetching(
           this.props.match.params.id,
           this.props.match.params.mediaType
         );
-      } else {
-        this.props.fetchMovie();
       }
+      // } else {
+      //   this.props.fetchMovie();
+      // }
     }
 
     render() {

@@ -22,7 +22,6 @@ import SpinnerSm from '../Layout/SpinnerSm';
 class CarouselContainer extends React.Component {
   render() {
     return (
-      // <div className="movie__list__carousel__container">
       <>
         <h2 className="movie__list__carousel__container__header">
           {this.props.header}
@@ -33,7 +32,6 @@ class CarouselContainer extends React.Component {
           mediaType={this.props.mediaType}
         />
       </>
-      // </div>
     );
   }
 }

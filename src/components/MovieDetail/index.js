@@ -96,7 +96,7 @@ class MovieDetail extends React.Component {
       <DataFetchContext.Provider value={this.state}>
         {this.renderHeader()}
 
-        <Body movies={this.props.movies} cast={this.state.cast} />
+        <Body movies={this.props.movies} />
       </DataFetchContext.Provider>
     );
   }

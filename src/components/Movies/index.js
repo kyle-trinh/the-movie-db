@@ -3,7 +3,7 @@ import Header from './Header';
 import MovieList from './MovieList';
 import { getMovieByGenre } from '../../actions/movie';
 import { connect } from 'react-redux';
-import { GET_MOVIES_BY_GENRE, MOVIE, TVSHOW } from '../../constants';
+import { GET_MOVIES_BY_GENRE } from '../../constants';
 import { findIdByGenre } from '../../utils/utilities';
 import { Spinner } from '../Layout';
 import store from '../../store';
@@ -45,8 +45,6 @@ class Movie extends React.Component {
   }
 
   render() {
-    console.log(this.props.mediaType);
-
     const { pageNum, mediaType, genre } = this.props.match.params;
     return (
       <div className="movie__list">

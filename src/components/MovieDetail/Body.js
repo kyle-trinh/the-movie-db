@@ -2,8 +2,9 @@ import React from 'react';
 import ActorCarousel from '../Carousels/ActorCarousel';
 import Review from './Review';
 import Trailers from './Trailers';
+import { withDataFetch } from './context';
 
-function Body({ movies, cast }) {
+function Body({ movies, data: { cast } }) {
   return (
     <div className="movie__details__body">
       <div className="movie__details__body-poster">
@@ -39,4 +40,4 @@ function Body({ movies, cast }) {
   );
 }
 
-export default Body;
+export default withDataFetch(Body);
