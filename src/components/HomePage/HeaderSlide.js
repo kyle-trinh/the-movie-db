@@ -2,6 +2,7 @@ import React from 'react';
 import { Transition } from 'react-spring/renderprops';
 import { config } from 'react-spring';
 import SlideInfo from './SlideInfo';
+import PropTypes from 'prop-types';
 
 class HeaderSlide extends React.Component {
   constructor(props) {
@@ -48,5 +49,9 @@ class HeaderSlide extends React.Component {
     );
   }
 }
+
+HeaderSlide.propTypes = {
+  movies: PropTypes.array.isRequired
+};
 
 export default HeaderSlide;

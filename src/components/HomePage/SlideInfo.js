@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { findGenreById, shortenOverview } from '../../utils/utilities';
 import InProgress from '../Layout/InProgress';
+import PropTypes from 'prop-types';
 
 function SlideInfo({ movie }) {
   const [showModal, setShowModal] = useState(false);
@@ -33,5 +34,9 @@ function SlideInfo({ movie }) {
     </div>
   );
 }
+
+SlideInfo.propTypes = {
+  movie: PropTypes.object.isRequired
+};
 
 export default SlideInfo;

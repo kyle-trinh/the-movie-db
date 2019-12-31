@@ -9,10 +9,7 @@ import {
   MOVIE_ERROR,
   GET_CREDIT,
   GET_DETAIL_MOVIES,
-  GET_GENRE_SET_LOADING,
-  GET_MOVIES_BY_GENRE,
   GET_DETAIL_SET_LOADING,
-  SEARCH_MOVIES,
   GET_TRENDING_MOVIES_ERROR,
   GET_NOW_PLAYING_MOVIES_ERROR,
   GET_POPULAR_MOVIES_ERROR,
@@ -20,10 +17,7 @@ import {
   GET_TOP_RATED_MOVIES_ERROR,
   GET_TRAILER_ERROR,
   SET_LOADING_ERROR,
-  GET_CREDIT_ERROR,
-  GET_MOVIES_BY_GENRE_ERROR,
-  GET_DETAIL_MOVIES_ERROR,
-  SEARCH_MOVIES_ERROR
+  GET_CREDIT_ERROR
 } from '../constants/types';
 
 const movieLists = [
@@ -34,10 +28,7 @@ const movieLists = [
   GET_TOP_RATED_MOVIES,
   GET_TRAILER,
   SET_LOADING,
-  GET_CREDIT,
-  GET_MOVIES_BY_GENRE,
-  GET_DETAIL_MOVIES,
-  SEARCH_MOVIES
+  GET_CREDIT
 ];
 
 const errors = [
@@ -48,14 +39,11 @@ const errors = [
   GET_TOP_RATED_MOVIES_ERROR,
   GET_TRAILER_ERROR,
   SET_LOADING_ERROR,
-  GET_CREDIT_ERROR,
-  GET_MOVIES_BY_GENRE_ERROR,
-  GET_DETAIL_MOVIES_ERROR,
-  SEARCH_MOVIES_ERROR
+  GET_CREDIT_ERROR
 ];
 
 const initialState = {
-  movies: {
+  list: {
     [GET_TRENDING_MOVIES]: null,
     [GET_NOW_PLAYING_MOVIES]: null,
     [GET_POPULAR_MOVIES]: null,
@@ -63,10 +51,7 @@ const initialState = {
     [GET_TOP_RATED_MOVIES]: null,
     [GET_TRAILER]: null,
     [SET_LOADING]: null,
-    [GET_CREDIT]: null,
-    [GET_MOVIES_BY_GENRE]: null,
-    [GET_DETAIL_MOVIES]: null,
-    [SEARCH_MOVIES]: null
+    [GET_CREDIT]: null
   },
 
   loading: {
@@ -77,10 +62,7 @@ const initialState = {
     [GET_TOP_RATED_MOVIES]: true,
     [GET_TRAILER]: true,
     [SET_LOADING]: true,
-    [GET_CREDIT]: true,
-    [GET_MOVIES_BY_GENRE]: true,
-    [GET_DETAIL_MOVIES]: true,
-    [SEARCH_MOVIES]: true
+    [GET_CREDIT]: true
   },
   errors: {
     [GET_TRENDING_MOVIES_ERROR]: null,
@@ -90,10 +72,7 @@ const initialState = {
     [GET_TOP_RATED_MOVIES_ERROR]: null,
     [GET_TRAILER_ERROR]: null,
     [SET_LOADING_ERROR]: null,
-    [GET_CREDIT_ERROR]: null,
-    [GET_MOVIES_BY_GENRE_ERROR]: null,
-    [GET_DETAIL_MOVIES_ERROR]: null,
-    [SEARCH_MOVIES_ERROR]: null
+    [GET_CREDIT_ERROR]: null
   }
 };
 
@@ -115,8 +94,8 @@ export default function(state = initialState, action) {
     case movieList:
       return {
         ...state,
-        movies: {
-          ...state.movies,
+        list: {
+          ...state.list,
           [movieList]: payload
         },
         loading: {
@@ -135,15 +114,6 @@ export default function(state = initialState, action) {
         loading: {
           ...state.loading,
           [error.slice(0, error.length - 6)]: false
-        }
-      };
-
-    case GET_GENRE_SET_LOADING:
-      return {
-        ...state,
-        loading: {
-          ...state.loading,
-          [GET_MOVIES_BY_GENRE]: true
         }
       };
 

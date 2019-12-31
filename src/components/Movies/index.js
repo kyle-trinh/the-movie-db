@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import MovieList from './MovieList';
-import { getMovieByGenre } from '../../actions/movie';
+import { getMovieByGenre } from '../../actions/multi';
 import { connect } from 'react-redux';
 import { GET_MOVIES_BY_GENRE } from '../../constants';
 import { findIdByGenre } from '../../utils/utilities';
@@ -66,8 +66,8 @@ class Movie extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    movies: state.movie.movies[GET_MOVIES_BY_GENRE],
-    loading: state.movie.loading[GET_MOVIES_BY_GENRE]
+    movies: state.multi.list[GET_MOVIES_BY_GENRE],
+    loading: state.multi.loading[GET_MOVIES_BY_GENRE]
   };
 }
 

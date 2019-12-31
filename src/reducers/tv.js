@@ -13,7 +13,7 @@ const tvLists = [
 ];
 
 const initialState = {
-  tvShows: {
+  list: {
     [GET_DETAIL_TV]: null,
     [GET_NOW_PLAYING_TV]: null,
     [GET_POPULAR_TV]: null,
@@ -41,8 +41,8 @@ export default function(state = initialState, action) {
     case tvList:
       return {
         ...state,
-        tvShows: {
-          ...state.tvShows,
+        list: {
+          ...state.list,
           [tvList]: payload
         },
         loading: {

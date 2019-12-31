@@ -14,14 +14,23 @@ class Carousel extends React.Component {
       slidesPerGroup: 1,
       loop: true,
       loopFillGroupWithBlank: true,
-      // breakpoints: {
-      //   1145: {
-      //     slidesPerView: 3
-      //   },
-      //   699: {
-      //     slidesPerView: 2
-      //   }
-      // },
+      breakpoints: {
+        400: {
+          slidesPerView: 2
+        },
+        500: {
+          slidesPerView: 2
+        },
+        720: {
+          slidesPerView: 3
+        },
+        1024: {
+          slidesPerView: 4
+        },
+        1200: {
+          slidesPerView: 5
+        }
+      },
       pagination: {
         el: '.swiper-pagination',
         clickable: true
@@ -41,7 +50,7 @@ class Carousel extends React.Component {
     return (
       <div
         className={`swiper-container ${
-          this.props.actor ? 'actor-container' : null
+          this.props.actor ? 'actor-container' : ''
         }`}
         ref={this.myRef}
       >

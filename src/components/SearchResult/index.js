@@ -2,7 +2,7 @@ import React from 'react';
 import { SEARCH_MOVIES } from '../../constants';
 import Spinner from '../Layout/Spinner';
 import { connect } from 'react-redux';
-import { searchMovies } from '../../actions/movie';
+import { searchMovies } from '../../actions/multi';
 import Header from './Header';
 import MovieList from './MovieList';
 
@@ -32,8 +32,8 @@ class SearchResult extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    movies: state.movie.movies[SEARCH_MOVIES],
-    loading: state.movie.loading[SEARCH_MOVIES]
+    movies: state.multi.list[SEARCH_MOVIES],
+    loading: state.multi.loading[SEARCH_MOVIES]
   };
 }
 

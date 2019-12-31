@@ -2,13 +2,11 @@ import React from 'react';
 import Header from './Header';
 import TvHeader from './TvHeader';
 import Body from './Body';
-import { getMovieDetails } from '../../actions/movie';
-import withMovieFetching from '../HOC/withMovieFetching';
-import { GET_DETAIL_MOVIES, TVSHOW } from '../../constants';
-import { PATH_BASE, API_KEY, MOVIE } from '../../constants';
+import { getMovieDetails } from '../../actions/multi';
+import movieDetailFetching from '../HOC/movieDetailFetching';
+import { TVSHOW, PATH_BASE, API_KEY, MOVIE } from '../../constants';
 import axios from 'axios';
 import DataFetchContext from './context';
-import Spinner from '../Layout/Spinner';
 
 class MovieDetail extends React.Component {
   constructor(props) {
@@ -64,9 +62,9 @@ class MovieDetail extends React.Component {
 
   renderHeader() {
     if (this.mediaType === MOVIE) {
-      return <Header movies={this.props.movies} />;
+      return <Header movies={this.props.detail} />;
     } else if (this.mediaType === TVSHOW) {
-      return <TvHeader movies={this.props.movies} />;
+      return <TvHeader movies={this.props.detail} />;
     }
   }
 
@@ -96,18 +94,10 @@ class MovieDetail extends React.Component {
       <DataFetchContext.Provider value={this.state}>
         {this.renderHeader()}
 
-        <Body movies={this.props.movies} />
+        <Body movies={this.props.detail} />
       </DataFetchContext.Provider>
     );
   }
 }
 
-const MovieDetailPage = withMovieFetching(
-  MovieDetail,
-  getMovieDetails,
-  GET_DETAIL_MOVIES,
-  MOVIE,
-  Spinner
-);
-
-export default MovieDetailPage;
+export default movieDetailFetching(MovieDetail, getMovieDetails);

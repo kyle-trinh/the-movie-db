@@ -2,7 +2,7 @@ import React from 'react';
 import Downshift, { resetIdCounter } from 'downshift';
 import debounce from 'lodash.debounce';
 import { withRouter } from 'react-router-dom';
-import { searchMovies } from '../../actions/movie';
+import { searchMovies } from '../../actions/multi';
 import { connect } from 'react-redux';
 import { SEARCH_MOVIES } from '../../constants';
 import { Link } from 'react-router-dom';
@@ -64,11 +64,6 @@ class SearchBox extends React.Component {
                 onChange: e => {
                   e.persist();
                   this.searchTerm(e.target.value);
-                  // const searchMovies = this.props.searchMovies;
-                  // const onSearchSubmit = debounce(e => {
-                  //   searchMovies(e.target.value);
-                  // }, 1000);
-                  // onSearchSubmit(e);
                 }
               })}
             />
@@ -131,8 +126,8 @@ class SearchBox extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    searchResult: state.movie.movies[SEARCH_MOVIES],
-    loading: state.movie.loading[SEARCH_MOVIES]
+    searchResult: state.multi.list[SEARCH_MOVIES],
+    loading: state.multi.loading[SEARCH_MOVIES]
   };
 }
 

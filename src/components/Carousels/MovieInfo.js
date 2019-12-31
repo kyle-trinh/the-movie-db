@@ -1,5 +1,6 @@
 import React from 'react';
 import { shortenTitle, findGenreById } from '../../utils/utilities';
+import PropTypes from 'prop-types';
 
 function MovieInfo({ movie, mediaType }) {
   return (
@@ -23,5 +24,10 @@ function MovieInfo({ movie, mediaType }) {
     </>
   );
 }
+
+MovieInfo.propTypes = {
+  movie: PropTypes.object.isRequired,
+  mediaType: PropTypes.string.isRequired
+};
 
 export default MovieInfo;

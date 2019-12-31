@@ -18,23 +18,22 @@ import {
   TVSHOW
 } from '../../constants';
 import SpinnerSm from '../Layout/SpinnerSm';
+import PropTypes from 'prop-types';
 
-class CarouselContainer extends React.Component {
-  render() {
-    return (
-      <>
-        <h2 className="movie__list__carousel__container__header">
-          {this.props.header}
-        </h2>
-
-        <MovieCarousel
-          movies={this.props.movies}
-          mediaType={this.props.mediaType}
-        />
-      </>
-    );
-  }
+function CarouselContainer({ header, movies, mediaType }) {
+  return (
+    <div className="movie__list__carousel__container">
+      <h2 className="movie__list__carousel__container__header">{header}</h2>
+      <MovieCarousel movies={movies} mediaType={mediaType} />
+    </div>
+  );
 }
+
+CarouselContainer.propTypes = {
+  header: PropTypes.string.isRequired,
+  movies: PropTypes.array.isRequired,
+  mediaType: PropTypes.string.isRequired
+};
 
 const GetPopular = withMovieFetching(
   CarouselContainer,

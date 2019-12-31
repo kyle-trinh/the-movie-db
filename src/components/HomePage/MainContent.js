@@ -39,29 +39,15 @@ class MainContent extends React.Component {
           <section className="movie__list">
             {this.state.mediaType === MOVIE ? (
               <>
-                <div className="movie__list__carousel__container">
-                  <GetNowPlaying header="Now Playing Movies" />
-                </div>
-
-                <div className="movie__list__carousel__container">
-                  <GetTopRated header="Top Rated Movies" />
-                </div>
-
-                <div className="movie__list__carousel__container">
-                  <GetPopular header="Popular Movies" />
-                </div>
+                <GetNowPlaying header="Now Playing Movies" />
+                <GetTopRated header="Top Rated Movies" />
+                <GetPopular header="Popular Movies" />
               </>
             ) : (
               <>
-                <div className="movie__list__carousel__container">
-                  <GetNowPlayingTV header="Now Playing TV" />
-                </div>
-                <div className="movie__list__carousel__container">
-                  <GetTopRatedTV header="Top Rated TV" />
-                </div>
-                <div className="movie__list__carousel__container">
-                  <GetPopularTV header="Popular TV" />
-                </div>
+                <GetNowPlayingTV header="Now Playing TV" />
+                <GetTopRatedTV header="Top Rated TV" />
+                <GetPopularTV header="Popular TV" />
               </>
             )}
           </section>

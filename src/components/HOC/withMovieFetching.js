@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { TVSHOW, MOVIE, GET_DETAIL_MOVIES } from '../../constants';
-import store from '../../store';
-import { GET_DETAIL_SET_LOADING } from '../../constants';
+import { MOVIE } from '../../constants';
+import PropTypes from 'prop-types';
 
 function getDisplayName(Component) {
   return Component.displayName || Component.name || 'Component';
@@ -17,36 +16,7 @@ function withMovieFetching(
 ) {
   class HOComponent extends React.Component {
     componentDidMount() {
-      if (this.props.match && this.props.match.params.id) {
-        store.dispatch({
-          type: GET_DETAIL_SET_LOADING
-        });
-        this.props.fetchMovie(
-          this.props.match.params.id,
-          this.props.match.params.mediaType
-        );
-      } else {
-        this.props.fetchMovie();
-      }
-    }
-
-    componentDidUpdate(prevProps) {
-      if (
-        this.props.match &&
-        this.props.match.params.id &&
-        prevProps.match.params.id !== this.props.match.params.id
-      ) {
-        store.dispatch({
-          type: GET_DETAIL_SET_LOADING
-        });
-        this.props.fetchMovie(
-          this.props.match.params.id,
-          this.props.match.params.mediaType
-        );
-      }
-      // } else {
-      //   this.props.fetchMovie();
-      // }
+      this.props.fetchMovie();
     }
 
     render() {
@@ -60,18 +30,27 @@ function withMovieFetching(
   }
 
   function mapStateToProps(state) {
-    if (mediaType === MOVIE || movieType === GET_DETAIL_MOVIES) {
-      return {
-        movies: state.movie.movies[movieType],
-        loading: state.movie.loading[movieType]
-      };
-    } else if (mediaType === TVSHOW) {
-      return {
-        movies: state.tv.tvShows[movieType],
-        loading: state.tv.loading[movieType]
-      };
-    }
+    return {
+      movies: state[mediaType].list[movieType],
+      loading: state[mediaType].loading[movieType]
+    };
+    // if (mediaType === MOVIE || movieType === GET_DETAIL_MOVIES) {
+    //   return {
+    //     movies: state.movie.movies[movieType],
+    //     loading: state.movie.loading[movieType]
+    //   };
+    // } else if (mediaType === TVSHOW) {
+    //   return {
+    //     movies: state.tv.tvShows[movieType],
+    //     loading: state.tv.loading[movieType]
+    //   };
+    // }
   }
+
+  Component.propTypes = {
+    movies: PropTypes.array.isRequired,
+    loading: PropTypes.bool.isRequired
+  };
 
   return connect(mapStateToProps, { fetchMovie })(HOComponent);
 }
