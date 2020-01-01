@@ -4,6 +4,75 @@
 
 //769 - 1170
 @include mediaLg {
+  .menu {
+    &-btn {
+      display: block;
+      cursor: pointer;
+    }
+  }
+
+  .navbar {
+    opacity: 0;
+    visibility: hidden;
+    width: 50%;
+    height: 100vh;
+    @include easeOut;
+
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .container {
+      height: 100%;
+    }
+
+    .menu {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 10rem;
+      justify-content: space-between;
+      height: 100%;
+
+      .menu-main {
+        flex-direction: column;
+        width: 100%;
+
+        .menu-nav {
+          flex-direction: column;
+          width: 100%;
+          margin-top: 2rem;
+
+          .nav-item {
+            width: 100%;
+            border: none;
+            border-left: 6px solid transparent;
+
+            &:hover {
+              background-color: rgba(50, 50, 50, 0.8);
+              border-left: 6px solid $secondary-color;
+            }
+
+            &.current {
+              background: rgba(50, 50, 50, 0.8);
+              border-left: 6px solid $secondary-color;
+            }
+
+            .nav-link {
+              padding: 1.5rem 2rem;
+            }
+          }
+        }
+      }
+
+      .search-box-profile {
+        width: 100%;
+        justify-content: space-between;
+
+        margin-bottom: 5rem;
+      }
+    }
+  }
 }
 
 // 500 - 768

@@ -410,6 +410,29 @@ section {
   transform: scale(0.9);
   transition: opacity 300ms, transform 300ms; }
 
+.menu-btn {
+  display: none;
+  position: absolute;
+  top: 5rem;
+  left: 5rem;
+  z-index: 9999; }
+  .menu-btn .btn-line {
+    width: 28px;
+    height: 3px;
+    background-color: #fff;
+    margin: 0 0 5px 0;
+    transition: all 0.5s ease-out; }
+  .menu-btn.close {
+    transform: rotate(180deg); }
+    .menu-btn.close .btn-line:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+      transition-delay: 0.1s; }
+    .menu-btn.close .btn-line:nth-child(2) {
+      opacity: 0; }
+    .menu-btn.close .btn-line:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+      transition-delay: 0.1s; }
+
 .navbar {
   position: absolute;
   top: 0;
@@ -1559,3 +1582,48 @@ body {
     margin: 0 auto;
     text-align: center;
     font-size: 1.4rem; }
+
+@media screen and (min-width: 769px) and (max-width: 1170px) {
+  .menu-btn {
+    display: block;
+    cursor: pointer; }
+  .navbar {
+    opacity: 0;
+    visibility: hidden;
+    width: 50%;
+    height: 100vh;
+    transition: all 0.5s ease-out; }
+    .navbar.show {
+      opacity: 1;
+      visibility: visible; }
+    .navbar .container {
+      height: 100%; }
+    .navbar .menu {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 10rem;
+      justify-content: space-between;
+      height: 100%; }
+      .navbar .menu .menu-main {
+        flex-direction: column;
+        width: 100%; }
+        .navbar .menu .menu-main .menu-nav {
+          flex-direction: column;
+          width: 100%;
+          margin-top: 2rem; }
+          .navbar .menu .menu-main .menu-nav .nav-item {
+            width: 100%;
+            border: none;
+            border-left: 6px solid transparent; }
+            .navbar .menu .menu-main .menu-nav .nav-item:hover {
+              background-color: rgba(50, 50, 50, 0.8);
+              border-left: 6px solid #f1c40f; }
+            .navbar .menu .menu-main .menu-nav .nav-item.current {
+              background: rgba(50, 50, 50, 0.8);
+              border-left: 6px solid #f1c40f; }
+            .navbar .menu .menu-main .menu-nav .nav-item .nav-link {
+              padding: 1.5rem 2rem; }
+      .navbar .menu .search-box-profile {
+        width: 100%;
+        justify-content: space-between;
+        margin-bottom: 5rem; } }

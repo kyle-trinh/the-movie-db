@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { findGenreById } from '../../utils/utilities';
+import MovieItem from './MovieItem';
 import PageBtn from './PageBtn';
+import PropTypes from 'prop-types';
 
 function MovieList({ movies, currentPg, currentGenre, mediaType }) {
   return (
@@ -10,36 +10,7 @@ function MovieList({ movies, currentPg, currentGenre, mediaType }) {
         <div className="section__movie__list-grid">
           {movies.results.map(function mapMovie(movie) {
             return (
-              <Link
-                key={movie.id}
-                to={`/${mediaType}/details/${movie.id}`}
-                className="section__movie__list-item"
-              >
-                <div className="poster">
-                  <img
-                    src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-                    alt=""
-                  />
-                </div>
-                <div className="movie__info">
-                  <h2 className="movie__info-title">
-                    {movie.title || movie.name || 'Unavalable'}
-                  </h2>
-                  <p className="text-normal text-dim mb-1">
-                    {movie.genre_ids
-                      .map(function matchId(id) {
-                        return findGenreById(id, mediaType);
-                      })
-                      .join(' - ')}
-                  </p>
-                  <div className="movie__info-rating">
-                    <p className="text-normal text-bold mr-1">
-                      {movie.vote_average}
-                    </p>
-                    <i className="fas fa-star fa-2x" />
-                  </div>
-                </div>
-              </Link>
+              <MovieItem movie={movie} mediaType={mediaType} key={movie.id} />
             );
           })}
         </div>
@@ -53,5 +24,12 @@ function MovieList({ movies, currentPg, currentGenre, mediaType }) {
     </section>
   );
 }
+
+MovieList.propTypes = {
+  movies: PropTypes.object.isRequired,
+  currentPg: PropTypes.number.isRequired,
+  currentGenre: PropTypes.string.isRequired,
+  mediaType: PropTypes.string.isRequired
+};
 
 export default MovieList;

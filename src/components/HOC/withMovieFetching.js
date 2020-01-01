@@ -34,17 +34,6 @@ function withMovieFetching(
       movies: state[mediaType].list[movieType],
       loading: state[mediaType].loading[movieType]
     };
-    // if (mediaType === MOVIE || movieType === GET_DETAIL_MOVIES) {
-    //   return {
-    //     movies: state.movie.movies[movieType],
-    //     loading: state.movie.loading[movieType]
-    //   };
-    // } else if (mediaType === TVSHOW) {
-    //   return {
-    //     movies: state.tv.tvShows[movieType],
-    //     loading: state.tv.loading[movieType]
-    //   };
-    // }
   }
 
   Component.propTypes = {

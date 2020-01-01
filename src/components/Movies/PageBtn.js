@@ -10,10 +10,10 @@ class PageBtn extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.currentPg === '1') {
-      this.setState((state, props) => ({
+    if (this.props.currentPg === 1) {
+      this.setState({
         first: true
-      }));
+      });
     }
   }
 
@@ -25,18 +25,18 @@ class PageBtn extends React.Component {
     return (
       <div className="section__movie__list-btn">
         <button
-          onClick={() => handleClick(parseInt(currentPg) - 1)}
+          onClick={() => handleClick(currentPg - 1)}
           disabled={this.state.first}
           className="btn-secondary"
         >
-          <p>Page {currentPg === '1' ? '' : parseInt(currentPg) - 1}</p>
+          <p>Page {currentPg === 1 ? '' : currentPg - 1}</p>
           <div className="btn-secondary-overlay" />
         </button>
         <button
           className="btn-primary"
-          onClick={() => handleClick(parseInt(currentPg) + 1)}
+          onClick={() => handleClick(currentPg + 1)}
         >
-          <p>Page {parseInt(currentPg) + 1}</p>
+          <p>Page {currentPg + 1}</p>
           <div className="btn-primary-overlay" />
         </button>
       </div>
