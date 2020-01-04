@@ -19,7 +19,7 @@ function TvHeader({ movies }) {
           <img
             className="header__movie__info-poster"
             src={`https://image.tmdb.org/t/p/w1280${movies.poster_path}`}
-            alt={movies.title}
+            alt={movies.title || movies.original_name}
           />
 
           <div className="header__movie__info-detail">
@@ -27,7 +27,9 @@ function TvHeader({ movies }) {
               {`Last Air Date: ${movies.last_air_date}`}
             </div>
 
-            <h1 className="header__movie__info-detail-title">{movies.title}</h1>
+            <h1 className="header__movie__info-detail-title">
+              {movies.title || movies.original_name}
+            </h1>
 
             <p className="header__movie__info-detail-genre">
               {`${movies.number_of_seasons} seasons | ` +

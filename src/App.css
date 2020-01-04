@@ -420,6 +420,7 @@ section {
     width: 28px;
     height: 3px;
     background-color: #fff;
+    box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.6);
     margin: 0 0 5px 0;
     transition: all 0.5s ease-out; }
   .menu-btn.close {
@@ -1773,13 +1774,18 @@ body {
     top: 50%; }
   .header__movie__info {
     flex-direction: column;
-    left: 1rem;
-    top: 18rem; }
+    left: 0rem;
+    top: 14rem; }
     .header__movie__info-poster {
       width: 15rem;
-      height: 20rem; }
+      height: 20rem;
+      margin-right: 0; }
     .header__movie__info-detail {
-      margin-top: 8rem; }
+      margin-top: 2rem;
+      width: 25rem; }
+      .header__movie__info-detail-title {
+        line-height: 1;
+        font-size: 3rem; }
   .header__movie__bottom {
     justify-content: center; }
     .header__movie__bottom-stats-item:nth-child(odd) {
@@ -1792,4 +1798,8 @@ body {
       visibility: hidden; }
   .movie__details__body {
     grid-template-areas: 'poster' 'content' 'video';
-    grid-template-columns: 1fr; } }
+    grid-template-columns: 1fr; }
+  .movie__details__body-title {
+    display: none;
+    visibility: hidden;
+    opacity: 0; } }

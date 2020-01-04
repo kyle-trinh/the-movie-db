@@ -5,6 +5,9 @@ import { withRouter } from 'react-router-dom';
 import { MOVIE, TVSHOW } from '../../constants';
 import InProgress from './InProgress';
 import SearchBox from './SearchBox';
+import { connect } from 'react-redux';
+import store from '../../store';
+import { TOGGLE_MENU } from '../../constants';
 
 function handleCurrentChange(pathname) {
   var prefix = pathname.split('/')[1];
@@ -22,8 +25,7 @@ class Navbar extends React.Component {
     super(props);
     this.state = {
       current: handleCurrentChange(this.props.location.pathname),
-      showModal: false,
-      showCloseBtn: false
+      showModal: false
     };
   }
 
@@ -42,10 +44,10 @@ class Navbar extends React.Component {
     return (
       <>
         <div
-          className={`menu-btn ${this.state.showCloseBtn ? 'close' : ''}`}
+          className={`menu-btn ${this.props.closeMenu ? '' : 'close'}`}
           onClick={() => {
-            this.setState(currentState => {
-              return { showCloseBtn: !currentState.showCloseBtn };
+            store.dispatch({
+              type: TOGGLE_MENU
             });
           }}
         >
@@ -53,7 +55,7 @@ class Navbar extends React.Component {
           <div className="btn-line"></div>
           <div className="btn-line"></div>
         </div>
-        <div className={`navbar ${this.state.showCloseBtn ? 'show' : ''}`}>
+        <div className={`navbar ${this.props.closeMenu ? '' : 'show'}`}>
           <div className="container">
             <nav className="menu">
               <div className="menu-main">
@@ -71,17 +73,7 @@ class Navbar extends React.Component {
                         }
                         key={index}
                       >
-                        <Link
-                          to={item.url}
-                          className="nav-link"
-                          onClick={() => {
-                            this.setState(currentState => {
-                              return {
-                                showCloseBtn: !currentState.showCloseBtn
-                              };
-                            });
-                          }}
-                        >
+                        <Link to={item.url} className="nav-link">
                           {item.title}
                         </Link>
                       </li>
@@ -110,4 +102,10 @@ class Navbar extends React.Component {
   }
 }
 
-export default withRouter(Navbar);
+function mapStateToProps(state) {
+  return {
+    closeMenu: state.menuBtn.closeMenu
+  };
+}
+
+export default withRouter(connect(mapStateToProps, {})(Navbar));

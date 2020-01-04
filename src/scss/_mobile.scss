@@ -342,16 +342,23 @@
 
   .header__movie__info {
     flex-direction: column;
-    left: 1rem;
-    top: 18rem;
+    left: 0rem;
+    top: 14rem;
 
     &-poster {
       width: 15rem;
       height: 20rem;
+      margin-right: 0;
     }
 
     &-detail {
-      margin-top: 8rem;
+      margin-top: 2rem;
+      width: 25rem;
+
+      &-title {
+        line-height: 1;
+        font-size: 3rem;
+      }
     }
   }
 
@@ -382,5 +389,11 @@
       'video';
 
     grid-template-columns: 1fr;
+  }
+
+  .movie__details__body-title {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
   }
 }
