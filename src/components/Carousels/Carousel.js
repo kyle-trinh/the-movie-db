@@ -16,7 +16,7 @@ class Carousel extends React.Component {
       loopFillGroupWithBlank: true,
       breakpoints: {
         400: {
-          slidesPerView: 2
+          slidesPerView: 1
         },
         500: {
           slidesPerView: 2

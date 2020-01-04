@@ -71,7 +71,17 @@ class Navbar extends React.Component {
                         }
                         key={index}
                       >
-                        <Link to={item.url} className="nav-link">
+                        <Link
+                          to={item.url}
+                          className="nav-link"
+                          onClick={() => {
+                            this.setState(currentState => {
+                              return {
+                                showCloseBtn: !currentState.showCloseBtn
+                              };
+                            });
+                          }}
+                        >
                           {item.title}
                         </Link>
                       </li>

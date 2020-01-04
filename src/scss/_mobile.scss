@@ -73,12 +73,314 @@
       }
     }
   }
+
+  .section__movie__list {
+    &-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 }
 
 // 500 - 768
 @include mediaMd {
+  .section__movie__list {
+    &-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &-item {
+      .poster {
+        img {
+          height: 34rem;
+        }
+      }
+    }
+  }
+
+  #header {
+    &-home {
+      .slideshow {
+        background-position: right;
+      }
+      .movie__info {
+        top: 20%;
+        width: 40rem;
+
+        &__title {
+          font-size: 5rem;
+        }
+      }
+    }
+  }
+
+  .menu {
+    &-btn {
+      display: block;
+      cursor: pointer;
+    }
+  }
+
+  .navbar {
+    opacity: 0;
+    visibility: hidden;
+    width: 50%;
+    height: 100vh;
+    @include easeOut;
+
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .container {
+      height: 100%;
+    }
+
+    .menu {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 10rem;
+      justify-content: space-between;
+      height: 100%;
+
+      .menu-main {
+        flex-direction: column;
+        width: 100%;
+
+        .menu-nav {
+          flex-direction: column;
+          width: 100%;
+          margin-top: 2rem;
+
+          .nav-item {
+            width: 100%;
+            border: none;
+            border-left: 6px solid transparent;
+
+            &:hover {
+              background-color: rgba(50, 50, 50, 0.8);
+              border-left: 6px solid $secondary-color;
+            }
+
+            &.current {
+              background: rgba(50, 50, 50, 0.8);
+              border-left: 6px solid $secondary-color;
+            }
+
+            .nav-link {
+              padding: 1.5rem 2rem;
+            }
+          }
+        }
+      }
+
+      .search-box-profile {
+        width: 100%;
+        justify-content: space-between;
+
+        margin-bottom: 5rem;
+      }
+    }
+  }
 }
 
 // <= 500px
 @include mediaSm {
+  .menu {
+    &-btn {
+      display: block;
+      cursor: pointer;
+    }
+  }
+
+  #main__content__home {
+    .switch__btn {
+      .switch__btn__container {
+        width: 25rem;
+        font-size: 2.5rem;
+
+        label {
+          #switch__btn__toggle:checked
+            + .switch__btn__box
+            > .switch__btn__slider {
+            transform: translateX(12rem);
+          }
+        }
+      }
+    }
+    .movie__list__carousel__container {
+      height: 46rem;
+    }
+  }
+
+  .swiper-container {
+    height: 36rem;
+  }
+
+  %btn-shared {
+    font-size: 1.5rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  #header {
+    &-home {
+      .slideshow {
+        background-position: right;
+      }
+      .movie__info {
+        top: 12%;
+        width: 30rem;
+
+        &__title {
+          font-size: 4rem;
+        }
+
+        &__genre,
+        &__showtime {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+
+  .text-lead {
+    font-size: 1.5rem;
+  }
+
+  .navbar {
+    opacity: 0;
+    visibility: hidden;
+    width: 80%;
+    height: 100vh;
+    @include easeOut;
+
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .container {
+      height: 100%;
+    }
+
+    .menu {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 10rem;
+      justify-content: space-between;
+      height: 100%;
+
+      .menu-main {
+        flex-direction: column;
+        width: 100%;
+
+        .menu-nav {
+          flex-direction: column;
+          width: 100%;
+          margin-top: 2rem;
+
+          .nav-item {
+            width: 100%;
+            border: none;
+            border-left: 6px solid transparent;
+
+            &:hover {
+              background-color: rgba(50, 50, 50, 0.8);
+              border-left: 6px solid $secondary-color;
+            }
+
+            &.current {
+              background: rgba(50, 50, 50, 0.8);
+              border-left: 6px solid $secondary-color;
+            }
+
+            .nav-link {
+              padding: 1.5rem 2rem;
+            }
+          }
+        }
+      }
+
+      .search-box-profile {
+        width: 100%;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 5rem;
+
+        .profile {
+          margin-top: 1rem;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  .section-heading {
+    line-height: 1;
+  }
+
+  .genre__selector-choices {
+    width: 30rem;
+    left: -30%;
+  }
+
+  .section__movie__list {
+    .container {
+      padding: 0 6rem;
+    }
+  }
+
+  .section__movie__list-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header__movie__bg-main {
+    height: 62%;
+    top: 50%;
+  }
+
+  .header__movie__info {
+    flex-direction: column;
+    left: 1rem;
+    top: 18rem;
+
+    &-poster {
+      width: 15rem;
+      height: 20rem;
+    }
+
+    &-detail {
+      margin-top: 8rem;
+    }
+  }
+
+  .header__movie__bottom {
+    justify-content: center;
+
+    &-stats {
+      &-item:nth-child(odd) {
+        display: none;
+        visibility: hidden;
+      }
+
+      &-item:nth-child(2) {
+        margin: 0 auto;
+      }
+    }
+
+    &-menu {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
+  .movie__details__body {
+    grid-template-areas:
+      'poster'
+      'content'
+      'video';
+
+    grid-template-columns: 1fr;
+  }
 }
