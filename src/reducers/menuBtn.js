@@ -1,4 +1,5 @@
 import { TOGGLE_MENU } from '../constants';
+import { CLOSE_MENU } from '../constants/types';
 
 const initialState = {
   closeMenu: true
@@ -10,6 +11,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         closeMenu: !state.closeMenu
+      };
+
+    case CLOSE_MENU:
+      return {
+        ...state,
+        closeMenu: true
       };
 
     default:
