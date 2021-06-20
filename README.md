@@ -1,34 +1,44 @@
 # The movie Database
 
-A place where you can browse through and search for your favourite movies, tv shows.
+A place where you can browse through and search for your favourite movies, TV shows.
 
-## Getting Started
+## Project Screenshot
 
-In the project directory, you can run:
+![Landing screen](images/photo1.PNG)
+![Movie detail](images/photo2.PNG)
 
-### `npm start`
+## Installation and Setup Instructions
 
-Run the app in development mode.
+Clone down this repository. You will need node and npm installed globally on your machine.
 
-### `npm run build`
+Installation:
 
-Build app for production to the `build` folder.
+`npm install`
+
+To start the application in development mode:
+
+`npm start`
+
+To build the app for production
+
+`npm run build`
 
 ## Technologies Used
 
-- ReactJS
+- React
+- Redux
 - Sass
-- HTML5
-- TMDb API
+- <a href="https://developers.themoviedb.org/3">TMDB API</a>
+- <a href="https://github.com/downshift-js/downshift">Downshift</a>
+- <a href="https://github.com/axios/axios">Axios</a>
+- <a href="https://github.com/cferdinandi/smooth-scroll">Smooth Scroll</a>
 
-## Contributors
+## Reflection
 
-- Binh Trinh - <i>Initial work </i>
+This was a one-month-long project I built right after I finished learning about React and Redux. The project's primary goal was to familiarize myself with the development process of an application using React and Redux. Another goal was to learn how to implement using information coming from a public API.
 
-## License
+At first, I wanted to build a Netflix clone that looked and felt exactly like Netflix. However, as I was developing it, I thought to myself, "Why don't I make it original so that I can practice my design skill as well?". That was when I planned out how I researched and designed the project, then coded it from the design. In the end, I was pretty satisfied with the design, especially the design of the movie detail page.
 
-This project is licensed under the MIT License
+One of the main challenges I ran into was Deployment. At first, I deployed the website to `Heroku`. However, I ran into an issue when I tested the search functionality. For some reason, the TMDB searching route was in `http`, while my website on `Heroku` was `https`, and it was not possible to make a request using `http` protocol from a `https` website. I spent a few days researching on this topic and ended up deploying the website to `Digital Ocean`, then bought a custom domain and served the website using `http`.
 
-## Acknowledgments
-
-- <a href="https://github.com/cferdinandi/smooth-scroll">Smooth Scroll</a> - Carousel Animation
+Another challenge was implementing the searching functionality. I used <a href="https://github.com/downshift-js/downshift">Downshift</a> for the autocomplete search box. It was quite simple to implement the feature with the library. However, I ran into a performance issue when the search box fired a request on every character typed into it. This led me to look for a way to limit the number of API calls fired. That was when I came across the concept of debounce, and then later applied it using the <a href="https://lodash.com/">Lodash</a> library.
